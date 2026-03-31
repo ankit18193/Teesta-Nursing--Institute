@@ -1,21 +1,21 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { checkAuth } from "@/lib/auth";
-import { testimonialSchema } from "@/lib/testimonial_validation";
+import { noticeSchema } from "@/lib/notice_validation";
 
-// GET all testimonials
+// GET all notices
 export async function GET() {
   try {
-    const testimonials = await prisma.testimonial.findMany({
+    const notices = await prisma.notice.findMany({
       orderBy: { createdAt: "desc" },
     });
 
     return NextResponse.json({
       success: true,
-      data: testimonials,
+      data: notices,
     });
   } catch (error) {
-    console.error("GET TESTINOMIALS ERROR")
+    console.error("GET NOTICE ERROR")
     return NextResponse.json(
       { success: false, message: "Something went wrong" },
       { status: 500 }
@@ -23,19 +23,19 @@ export async function GET() {
   }
 }
 
-// POST create testimonial
+// POST create notice
 export async function POST(req: Request) {
   try {
-              const user=checkAuth(req);
-              if (!user) {
-        return NextResponse.json(
-          { success: false, message: "Unauthorized" },
-          { status: 401 }
-        );
-      }
+       const user=checkAuth(req);
+      if (!user) {
+    return NextResponse.json(
+      { success: false, message: "Unauthorized" },
+      { status: 401 }
+    );
+  }
     const body = await req.json();
 
-    const parsed = testimonialSchema.safeParse(body);
+    const parsed = noticeSchema.safeParse(body);
 
     if (!parsed.success) {
       return NextResponse.json(
@@ -47,33 +47,26 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+    const { title, content } = body;
 
-    const { name, course, message, image, imageId } = parsed.data;
-
-    if (!name || !message) {
+    if (!title || !content) {
       return NextResponse.json(
-        { success: false, message: "Name and message are required" },
+        { success: false, message: "Title and content required" },
         { status: 400 }
       );
     }
 
-    const testimonial = await prisma.testimonial.create({
-      data: {
-        name,
-        course,
-        message,
-        image,
-        imageId,
-      },
+    const notice = await prisma.notice.create({
+      data: { title, content },
     });
 
     return NextResponse.json({
       success: true,
-      data: testimonial,
-      message: "Testimonial created successfully",
+      data: notice,
+      message: "Notice created",
     });
   } catch (error) {
-    console.error("CRREATE TESTINOMIALS ERROR")
+    console.error("CREATE NOTICE ERROR")
     return NextResponse.json(
       { success: false, message: "Something went wrong" },
       { status: 500 }

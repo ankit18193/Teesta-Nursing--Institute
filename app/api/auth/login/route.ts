@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import bcrypt from 'bcrypt';
-
+import { generateToken } from "@/lib/jwt";
 // POST → Admin login
 export async function POST(req: Request) {
   try {
@@ -35,6 +35,11 @@ export async function POST(req: Request) {
       );
     }
 
+     const token = generateToken({
+      id: admin.id,
+      email: admin.email,
+    });
+
     return NextResponse.json({
       success: true,
       message: "Login successful",
@@ -42,11 +47,12 @@ export async function POST(req: Request) {
         adminId: admin.id,
         email: admin.email,
       },
-      token: "admin-secret-token",
+      token,
     });
   } catch (error) {
+    console.error("LOGIN ERROR")
     return NextResponse.json(
-      { success: false, message: "Server error" },
+      { success: false, message: "Something went wrong" },
       { status: 500 }
     );
   }

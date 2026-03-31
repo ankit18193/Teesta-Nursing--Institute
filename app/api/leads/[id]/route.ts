@@ -1,3 +1,4 @@
+import { checkAuth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
@@ -7,8 +8,17 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const user=checkAuth(req);
+    
+    if (!user) {
+      return NextResponse.json(
+        { success: false, message: "Unauthorized" },
+        { status: 401 }
+      );
+    }
+       
     const { id } = await params;
-
+ 
     const text = await req.text();
     if (!text) {
       return NextResponse.json(
@@ -47,8 +57,9 @@ export async function PATCH(
       message: "Lead updated successfully",
     });
   } catch (error) {
+    console.error("UPDATE LEADS ERROR:",error)
     return NextResponse.json(
-      { success: false, message: "Server error" },
+      { success: false, message: "Something went wrong"},
       { status: 500 }
     );
   }
