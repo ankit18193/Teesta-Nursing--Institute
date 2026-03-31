@@ -33,6 +33,7 @@ model Testimonial {
   course    String?
   message   String
   image     String?
+  imageId   String?
   createdAt DateTime @default(now())
 }
 
@@ -45,4 +46,18 @@ model Admin {
 enum LeadStatus {
   NEW
   CONTACTED
+}
+
+model Notice {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+}
+
+model Gallery {
+  id        Int      @id @default(autoincrement())
+  image     String
+  imageId   String   
+  createdAt DateTime @default(now())
 }

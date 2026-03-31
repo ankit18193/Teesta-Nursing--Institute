@@ -1,5 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { checkAuth } from "@/lib/auth";
+import { courseSchema } from "@/lib/course_validation";
 
 // GET all courses
 export async function GET() {
@@ -13,6 +15,7 @@ export async function GET() {
       data: courses,
     });
   } catch (error) {
+    console.error("GET COURSE ERROR")
     return NextResponse.json(
       { success: false, message: "Server error" },
       { status: 500 }
@@ -23,7 +26,29 @@ export async function GET() {
 // POST create course (admin)
 export async function POST(req: Request) {
   try {
+          const user=checkAuth(req);
+
+          if (!user) {
+        return NextResponse.json(
+          { success: false, message: "Unauthorized" },
+          { status: 401 }
+        );
+      }
     const body = await req.json();
+
+       const parsed = courseSchema.safeParse(body);
+    
+        if (!parsed.success) {
+          return NextResponse.json(
+            {
+              success: false,
+              message:"Invalid input",
+              error:parsed.error.issues[0]?.message
+            },
+            { status: 400 }
+          );
+        }
+
     const { title, duration, description, eligibility } = body;
 
     if (!title) {
@@ -48,8 +73,9 @@ export async function POST(req: Request) {
       message: "Course created successfully",
     });
   } catch (error) {
+    console.error("CREATE COURSE ERROR")
     return NextResponse.json(
-      { success: false, message: "Server error" },
+      { success: false, message: "Something went wrong" },
       { status: 500 }
     );
   }
