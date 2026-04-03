@@ -4,9 +4,153 @@
 
 .container-custom {
     @apply max-w-7xl mx-auto px-6;
-  }
-  
+}
+
 * {
     @apply transition-all duration-300;
+}
+
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🔥 BASE STATE (hidden before animation) */
+.animate-drop {
+  opacity: 0;
+}
+
+/* 🔥 STAGGER DELAYS (updated for better visibility) */
+.delay-200 {
+  animation-delay: 0.3s;
+}
+
+.delay-300 {
+  animation-delay: 0.6s;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #4FC3F7;
+  transform: scale(1.2);
+}
+
+.swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1) !important;
+}
+
+/* 🔥 ACTIVE SLIDE ONLY ANIMATION */
+.swiper-slide-active .animate-drop {
+  animation: drop 0.8s ease forwards;
+}
+
+/* HEADING ANIMATION (strong drop) */
+@keyframes drop {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* DESCRIPTION ANIMATION (smooth fade + slight rise) */
+  @keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* BASE */
+  .animate-drop {
+    opacity: 0;
+  }
+  
+  .animate-fadeUp {
+    opacity: 0;
+  }
+  
+  /* ACTIVE SLIDE */
+  .swiper-slide-active .animate-drop {
+    animation: drop 0.8s ease forwards;
+  }
+  
+  .swiper-slide-active .animate-fadeUp {
+    animation: fadeUp 0.9s ease forwards;
+  }
+  
+  /* DELAYS */
+  .delay-200 {
+    animation-delay: 0.4s;
+  }
+  
+  .delay-300 {
+    animation-delay: 0.7s;
   }
 
+
+  /* GLASS SECTION BACKGROUND */
+  .glass-section {
+    position: relative;
+    background-image: url('/images/hero/hero1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* 🔥 THIS LINE */
+  }
+
+.glass-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 20, 30, 0.75); /* dark overlay */
+  backdrop-filter: blur(10px);
+  z-index: 0;
+}
+
+.glass-content {
+  position: relative;
+  z-index: 1;
+}
+
+
+  /* GLASS SECTION for Testimonials BACKGROUND */
+  .glass-testimonials {
+    position: relative;
+    background-image: url('/images/hero/hero2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+  .glass-testimonials::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 20, 30, 0.75);
+    backdrop-filter: blur(10px);
+    z-index: 0;
+  }
+  
+  .glass-content-testimonials {
+    position: relative;
+    z-index: 1;
+  }

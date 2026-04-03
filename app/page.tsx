@@ -1,9 +1,26 @@
+import Hero from "@/components/sections/Hero";
+import InstitutesSection from "@/components/sections/InstitutesSection"
+import AboutSection from "@/components/sections/AboutSection";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import Accreditation from "@/components/sections/Accreditation";
+import AdmissionQuery from "@/components/sections/AdmissionQuery";
+import Testimonials from "@/components/sections/Testimonials";
+import CTASection from "@/components/sections/CTASection";
+import Hospitals from "@/components/sections/Hospitals";
+
 export default function Home() {
   return (
-    <main className="flex items-center justify-center h-screen bg-red-500">
-      <h1 className="text-3xl font-bold text-white">
-        Teesta Nursing Institute
-      </h1>
-    </main>
+    <>
+      <Hero />
+      <InstitutesSection />
+      <AboutSection/>
+      <WhyChooseUs/>
+      <Accreditation/>
+      <Hospitals/>
+      <AdmissionQuery/>
+      <Testimonials/>
+      
+
+    </>
   );
 }
