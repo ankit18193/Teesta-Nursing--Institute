@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^13.13.0",
-
-    "embla-carousel-react": "^8.6.0",
-    "framer-motion": "^12.38.0",
     "@prisma/client": "^5.22.0",
+    "axios": "^1.14.0",
     "bcrypt": "^6.0.0",
     "cloudinary": "^2.9.0",
+    "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.38.0",
     "jsonwebtoken": "^9.0.3",
     "lucide-react": "^1.7.0",
     "multer": "^2.1.1",
