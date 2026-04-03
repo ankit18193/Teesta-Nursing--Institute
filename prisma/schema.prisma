@@ -11,7 +11,6 @@ model Lead {
   id        Int        @id @default(autoincrement())
   name      String
   phone     String
-  email     String?
   course    String?
   message   String?
   status    LeadStatus @default(NEW)
@@ -43,11 +42,6 @@ model Admin {
   password String
 }
 
-enum LeadStatus {
-  NEW
-  CONTACTED
-}
-
 model Notice {
   id        Int      @id @default(autoincrement())
   title     String
@@ -58,6 +52,11 @@ model Notice {
 model Gallery {
   id        Int      @id @default(autoincrement())
   image     String
-  imageId   String   
+  imageId   String
   createdAt DateTime @default(now())
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
 }
