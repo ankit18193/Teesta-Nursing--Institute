@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id        Int        @id @default(autoincrement())
+  name      String
+  phone     String
+  email     String?
+  course    String?
+  message   String?
+  status    LeadStatus @default(NEW)
+  createdAt DateTime   @default(now())
+}
+
+model Course {
+  id          Int      @id @default(autoincrement())
+  title       String
+  duration    String?
+  description String?
+  eligibility String?
+  createdAt   DateTime @default(now())
+}
+
+model Testimonial {
+  id        Int      @id @default(autoincrement())
+  name      String
+  course    String?
+  message   String
+  image     String?
+  imageId   String?
+  createdAt DateTime @default(now())
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+}
+
+model Notice {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+}
+
+model Gallery {
+  id        Int      @id @default(autoincrement())
+  image     String
+  imageId   String   
+  createdAt DateTime @default(now())
+}
