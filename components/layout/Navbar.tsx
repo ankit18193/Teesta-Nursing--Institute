@@ -1,8 +1,13 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
+
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+
+
 
 const navLinks = [
   { name: "Home", href: "/" },

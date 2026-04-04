@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { motion } from "framer-motion";
 
@@ -61,12 +62,15 @@ export default function InstitutesSection() {
                   {item.desc}
                 </p>
               </div>
+                 
 
+              <Link href="/about/institutions">   
               <button className="self-start bg-white/15 backdrop-blur-md border border-white/20
                      hover:bg-white hover:text-primary px-5 py-2.5 rounded-lg text-sm font-semibold
                      transition duration-300">
                 Read More
               </button>
+              </Link>
 
             </motion.div>
           ))}

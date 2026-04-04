@@ -7,9 +7,26 @@ import { SiInstagram, SiFacebook, SiX, SiYoutube } from "@icons-pack/react-simpl
 
 
 
+const programmes = [
+    { name: "G.N.M.", href: "/courses/gnm" },
+    { name: "B.Sc Nursing", href: "/courses/bsc" },
+    { name: "B Pharma", href: "/courses/bpharma" },
+    { name: "D Pharma", href: "/courses/dpharma" },
+];
+
+const quickLinks = [
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about/institutions" },
+    { name: "Hospitals", href: "/hospitals" },
+    { name: "Leadership", href: "/about/leadership" },
+    { name: "FAQ'S", href: "/resources/faq" }, // update if different route
+];
+
+
+
 export default function Footer() {
 
-    
+
 
 
     return (
@@ -92,12 +109,27 @@ export default function Footer() {
 
                     {/* COLUMN 2 */}
                     <div className="md:col-span-3">
-                        <h3 className="text-[16px] font-bold text-white mb-6">Quick Links</h3>
+                        <h3 className="text-[16px] font-bold text-white mb-6">
+                            Quick Links
+                        </h3>
+
                         <ul className="space-y-3 text-[14px]">
-                            {["Home", "About us", "Our Facility", "FAQ'S", "Leadership"].map((link) => (
-                                <li key={link} className="border-b border-dashed border-gray-700 pb-2">
-                                    <Link href="#" className="text-gray-400 hover:text-accent transition duration-200">
-                                        {link}
+                            {quickLinks.map((item) => (
+                                <li
+                                    key={item.name}
+                                    className="border-b border-dashed border-gray-700 pb-2 group"
+                                >
+                                    <Link
+                                        href={item.href}
+                                        className="flex items-center justify-between text-gray-400 
+                     hover:text-accent transition duration-200"
+                                    >
+                                        {item.name}
+
+                                        {/* 🔥 hover arrow */}
+                                        <span className="opacity-0 group-hover:opacity-100 transition text-xs">
+                                            →
+                                        </span>
                                     </Link>
                                 </li>
                             ))}
@@ -106,12 +138,27 @@ export default function Footer() {
 
                     {/* COLUMN 3 */}
                     <div className="md:col-span-4">
-                        <h3 className="text-[16px] font-bold text-white mb-6">Programmes</h3>
+                        <h3 className="text-[16px] font-bold text-white mb-6">
+                            Programmes
+                        </h3>
+
                         <ul className="space-y-3 text-[14px]">
-                            {["G.N.M.", "B.Sc", "B Pharma", "D Pharma"].map((link) => (
-                                <li key={link} className="border-b border-dashed border-gray-700 pb-2">
-                                    <Link href="#" className="text-gray-400 hover:text-accent transition duration-200">
-                                        {link}
+                            {programmes.map((item) => (
+                                <li
+                                    key={item.name}
+                                    className="border-b border-dashed border-gray-700 pb-2 group"
+                                >
+                                    <Link
+                                        href={item.href}
+                                        className="flex items-center justify-between text-gray-400 
+                     hover:text-accent transition duration-200"
+                                    >
+                                        {item.name}
+
+                                        {/* 🔥 subtle arrow (premium touch) */}
+                                        <span className="opacity-0 group-hover:opacity-100 transition text-xs">
+                                            →
+                                        </span>
                                     </Link>
                                 </li>
                             ))}

@@ -1,7 +1,8 @@
 "use client";
 
 import { Phone, Mail } from "lucide-react";
-import { SiInstagram, SiFacebook } from "@icons-pack/react-simple-icons";
+import { SiInstagram, SiFacebook, SiX, SiYoutube } from "@icons-pack/react-simple-icons";
+
 
 import Link from "next/link";
 
@@ -35,14 +36,22 @@ export default function TopBar() {
 
             <SiInstagram
               size={18}
-              className="text-pink-500 hover:scale-110 transition duration-200 cursor-pointer"
+              className="text-pink-600 hover:scale-110 transition duration-200 cursor-pointer"
+            />
+            <SiX
+              size={18}
+              className="text-blue-500 hover:scale-110 transition duration-200 cursor-pointer"
+            />
+            <SiYoutube
+              size={18}
+              className="text-red-500 hover:scale-110 transition duration-200 cursor-pointer"
             />
           </div>
 
           {/* SMALL CTA */}
           <Link
             href="/admission"
-            className="bg-white text-primary px-4 py-1.5 rounded-md font-semibold shadow-sm hover:scale-105 hover:bg-accent hover:text-white hover:shadow-md transition duration-200"
+            className="bg-white text-primary px-4 py-1.5 rounded-md font-semibold shadow-sm hover:scale-105 hover:bg-[#4FC3F7] hover:text-white hover:shadow-md transition duration-200"
           >
             Apply Now
           </Link>

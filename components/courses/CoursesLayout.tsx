@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HeroSlider from "../resources/HeroSlider";
 
 const courseLinks = [
     { name: "GNM Nursing", href: "/courses/gnm" },
@@ -61,7 +62,7 @@ export default function CoursesLayout({
                                 <Link
                                     key={item.name}
                                     href={item.href}
-                                    className="text-sm px-3 py-2 rounded-md hover:bg-white/10 transition"
+                                    className="text-sm px-3 py-2 rounded-md hover:bg-white/10 transition-all duration-200"
                                 >
                                     {item.name}
                                 </Link>
@@ -70,8 +71,12 @@ export default function CoursesLayout({
 
                     </div>
 
+                    <div className="rounded-2xl overflow-hidden shadow-md">
+                        <HeroSlider />
+                    </div>
+
                     {/* 🔥 QUICK DOWNLOADS */}
-                    <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+                    <div className="bg-[#4FC3F7]  rounded-xl p-5 shadow-sm border border-gray-100">
 
                         <h3 className="text-lg font-semibold mb-4">
                             Quick <span className="text-primary">Downloads</span>
@@ -106,7 +111,7 @@ export default function CoursesLayout({
                     </div>
 
                     {/* 🔥 APPLY FORM */}
-                    
+
                     <div className="bg-gradient-to-br from-primary to-primary/90 rounded-2xl p-6 text-white shadow-lg">
 
                         <h3 className="text-xl font-semibold mb-1">
@@ -127,7 +132,7 @@ export default function CoursesLayout({
     outline-none focus:ring-2 focus:ring-white transition"
                             />
 
-                            
+
 
                             {/* PHONE */}
                             <input
