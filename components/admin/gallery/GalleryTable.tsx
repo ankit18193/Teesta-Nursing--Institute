@@ -7,6 +7,10 @@ import ConfirmModal from "@/components/admin/common/ConfirmModal";
 const initialImages = [
   "/images/hospitals/h1.jpg",
   "/images/hospitals/h2.jpg",
+  "/images/hospitals/h2.jpg",
+  "/images/hospitals/h2.jpg",
+  "/images/hospitals/h2.jpg",
+  "/images/hospitals/h2.jpg",
 ];
 
 export default function GalleryTable() {
@@ -37,14 +41,14 @@ export default function GalleryTable() {
       </div>
 
       {/* GRID */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
 
         {images.map((img, i) => (
           <div key={i} className="relative group">
 
             <img
               src={img}
-              className="h-32 w-full object-cover rounded"
+              className="h-60 w-full object-cover rounded"
             />
 
             <button

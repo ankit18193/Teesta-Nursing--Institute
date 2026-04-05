@@ -12,30 +12,44 @@ export default function ConfirmModal({
   onClose: () => void;
 }) {
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center 
+                    bg-black/30 backdrop-blur-sm">
 
-      <div className="bg-white rounded-xl p-6 w-full max-w-sm shadow-lg">
+      {/* Modal Card */}
+      <div className="w-full max-w-sm rounded-2xl p-6
+                      bg-white shadow-2xl border border-gray-200
+                      animate-in fade-in zoom-in-95 duration-200">
 
-        <h2 className="text-lg font-semibold mb-3">
+        {/* Title */}
+        <h2 className="text-lg font-semibold text-gray-900 mb-2">
           {title}
         </h2>
 
-        <p className="text-sm text-gray-600 mb-6">
+        {/* Message */}
+        <p className="text-sm text-gray-600 mb-6 leading-relaxed">
           {message}
         </p>
 
+        {/* Actions */}
         <div className="flex justify-end gap-3">
 
+          {/* Cancel */}
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm border rounded-lg hover:bg-gray-100"
+            className="px-4 py-2 text-sm rounded-lg border border-gray-300 
+                       text-gray-700 hover:bg-gray-100 transition"
           >
             Cancel
           </button>
 
+          {/* Confirm */}
           <button
             onClick={onConfirm}
-            className="px-4 py-2 text-sm bg-red-500 text-white rounded-lg hover:bg-red-600"
+            className="px-4 py-2 text-sm rounded-lg font-medium
+                       bg-red-500 text-white 
+                       hover:bg-red-600
+                       shadow-sm hover:shadow-md
+                       transition"
           >
             Delete
           </button>
