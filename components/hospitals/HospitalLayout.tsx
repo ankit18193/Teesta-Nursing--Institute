@@ -3,17 +3,26 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// ✅ FIX 1: synced with actual hospital data
 const hospitals = [
-  { id: "apollo", name: "Apollo Hospital" },
-  { id: "fortis", name: "Fortis Healthcare" },
-  { id: "aiims", name: "AIIMS" },
-  { id: "medanta", name: "Medanta Hospital" },
-  { id: "max", name: "Max Healthcare" },
-  { id: "narayana", name: "Narayana Health" },
-  { id: "ruby", name: "Ruby Hospital" },
-  { id: "manipal", name: "Manipal Hospital" },
-  { id: "columbia", name: "Columbia Asia" },
-];
+    { id: "astha", name: "Astha Hospital" },
+  
+    { id: "hope", name: "Hope & Hill Cancer Hospital" },
+  
+    { id: "kurseong-subdivisional", name: "Kurseong Sub-Divisional Hospital" },
+  
+    { id: "malbazar", name: "Malbazar Super Hospital" },
+  
+    { id: "malbazar-general", name: "Malbazar Hospital" },
+  
+    { id: "mitra", name: "Mitra Hospital" },
+  
+    { id: "siliguri-subdivisional", name: "Siliguri Sub-Divisional Hospital" },
+  
+    { id: "sun", name: "Sun Hospital & Diagnostic Center" },
+  
+    { id: "tufanganj", name: "Tufanganj Hospital" },
+  ];
 
 export default function HospitalLayout({
   children,
@@ -22,8 +31,12 @@ export default function HospitalLayout({
 }) {
   const pathname = usePathname();
 
+  // ✅ FIX 2: extract id safely (no includes bug)
+  const currentId = pathname.split("/")[2];
+
+  // ✅ FIX 3: exact match
   const currentHospital =
-    hospitals.find((h) => pathname.includes(h.id))?.name || "Hospital";
+    hospitals.find((h) => h.id === currentId)?.name || "Hospital";
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -55,7 +68,8 @@ export default function HospitalLayout({
 
             <div className="flex flex-col gap-2">
               {hospitals.map((h) => {
-                const isActive = pathname.includes(h.id);
+                // ✅ FIX 4: correct active state
+                const isActive = currentId === h.id;
 
                 return (
                   <Link

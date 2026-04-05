@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -107,9 +108,12 @@ export default function AboutSection() {
           </div>
 
           {/* CTA */}
+          <Link href="/about/institutions">
           <button className="mt-8 bg-primary hover:bg-primary/90 text-white px-7 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition duration-300">
             Learn More
           </button>
+          </Link>
+          
 
         </motion.div>
 
