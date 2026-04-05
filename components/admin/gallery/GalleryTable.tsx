@@ -12,12 +12,10 @@ interface GalleryItem {
 }
 
 export default function GalleryTable() {
- const [images, setImages] = useState<GalleryItem[]>([]);
+  const [images, setImages] = useState<GalleryItem[]>([]);
   const [open, setOpen] = useState(false);
   const [deleteItem, setDeleteItem] = useState<GalleryItem | null>(null);
 
-
-  // FETCH FROM DB
   const fetchGallery = async () => {
     try {
       const res = await axios.get("/api/gallery");
@@ -27,27 +25,22 @@ export default function GalleryTable() {
     }
   };
 
-    useEffect(() => {
+  useEffect(() => {
     fetchGallery();
   }, []);
 
-  // DELETE FROM BACKEND
   const handleDelete = async () => {
     if (!deleteItem) return;
 
     try {
       const token = localStorage.getItem("token");
-     await axios.delete(`/api/gallery/${deleteItem.id}`, {
-       headers: {
-      Authorization: `Bearer ${token}`,
-       },
-    });
+      await axios.delete(`/api/gallery/${deleteItem.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-      // remove from UI
-      setImages((prev) =>
-        prev.filter((item) => item.id !== deleteItem.id)
-      );
-
+      setImages((prev) => prev.filter((item) => item.id !== deleteItem.id));
       setDeleteItem(null);
     } catch (error) {
       console.error("Delete error:", error);
@@ -56,8 +49,6 @@ export default function GalleryTable() {
 
   return (
     <div className="space-y-6">
-
-      {/* HEADER */}
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold">Gallery</h2>
 
@@ -69,35 +60,31 @@ export default function GalleryTable() {
         </button>
       </div>
 
-      {/* GRID */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-
         {images.map((item) => (
           <div key={item.id} className="relative group">
-
             <img
               src={item.image}
+              alt=""
               className="h-32 w-full object-cover rounded"
             />
 
             <button
+              type="button"
               onClick={() => setDeleteItem(item)}
               className="absolute top-2 right-2 bg-black/50 text-white px-2 py-1 text-xs rounded opacity-0 group-hover:opacity-100"
             >
               Delete
             </button>
-
           </div>
         ))}
-
       </div>
 
-      {/* MODALS */}
       {open && (
         <GalleryForm
           onClose={() => {
             setOpen(false);
-            fetchGallery(); //  refresh after upload
+            fetchGallery();
           }}
         />
       )}
@@ -110,7 +97,6 @@ export default function GalleryTable() {
           onClose={() => setDeleteItem(null)}
         />
       )}
-
     </div>
   );
 }
