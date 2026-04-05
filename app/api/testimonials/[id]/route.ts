@@ -5,10 +5,11 @@ import { deleteImage } from "@/lib/cloudinary";
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // 🔐 AUTH CHECK
+    
     const user = checkAuth(req);
     if (!user) {
       return NextResponse.json(
@@ -17,10 +18,11 @@ export async function DELETE(
       );
     }
 
-    const id = Number(params.id);
+    const { id } = await params;
+    const numericId = Number(id);
 
     // ⚠️ Validate ID
-    if (!id || isNaN(id)) {
+    if (!numericId) {
       return NextResponse.json(
         { success: false, message: "Invalid ID" },
         { status: 400 }
@@ -29,7 +31,7 @@ export async function DELETE(
 
     // 🔍 Find record
     const testimonial = await prisma.testimonial.findUnique({
-      where: { id },
+      where: { id:numericId },
     });
 
     if (!testimonial) {
@@ -56,7 +58,7 @@ export async function DELETE(
 
     // 🧠 Delete from DB (MAIN ACTION)
     await prisma.testimonial.delete({
-      where: { id },
+      where: { id:numericId },
     });
 
     return NextResponse.json({
