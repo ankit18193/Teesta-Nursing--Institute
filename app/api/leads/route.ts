@@ -20,7 +20,7 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-    const { name, phone, email, course, message } = parsed.data;
+    const { name, phone,course, message } = parsed.data;
 
     if (!name || !phone) {
       return NextResponse.json(
@@ -31,19 +31,28 @@ export async function POST(req: Request) {
 
     const lead = await prisma.lead.create({
       data: {
-        name,
-        phone,
-        email,
-        course,
-        message,
+        name:name.trim(),
+        phone:phone.trim(),
+        course:course?.trim() || null,
+        message:message?.trim() || null,
       },
     });
 
     return NextResponse.json({
       success: true,
-      data: lead,
-      message: "Lead created successfully",
-    });
+      data:{
+          id: lead.id,
+          name: lead.name,  
+          phone: lead.phone,
+          course: lead.course,
+          message: lead.message,
+          status: lead.status,
+          createdAt: lead.createdAt,
+      },
+      message: "Inquiry submitted successfully! We'll contact you soon",
+    },
+    {status:201}
+  );
   } catch (error:any) {
     console.error("CREATE LEAD ERROR:",error);
     return NextResponse.json(

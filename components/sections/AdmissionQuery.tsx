@@ -1,9 +1,91 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Loader2 } from "lucide-react";
+import { useState } from "react";
+import axios from "axios";
 
 export default function AdmissionQuery() {
+
+  const [formData,setFormData]=useState({
+    name:"",
+    phone:"",
+    course:"",
+    message:"",
+  })
+
+  const [isLoading, setIsLoading]=useState(false);
+  const [error,setError]=useState("");
+  const [success, setSuccess]=useState("");
+
+      const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setError("");
+    setSuccess("");
+  };
+
+
+   const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
+    setSuccess("");
+
+    
+    if (!formData.name.trim()) {  
+      setError("Please enter your full name");
+      setIsLoading(false);
+      return;
+    }
+
+    if (!formData.phone.trim()) {
+      setError("Please enter your phone number");
+      setIsLoading(false);
+      return;
+    }
+
+    // Phone validation
+    const phoneDigits = formData.phone.replace(/[^0-9]/g, '');
+    if (phoneDigits.length < 10) {
+      setError("Please enter a valid 10-digit phone number");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await axios.post("/api/leads", {
+          name: formData.name.trim(),  
+          phone: formData.phone.trim(),
+          course: formData.course || null,
+          message: formData.message.trim() || null,
+      });
+
+      const result = await response.data;
+
+      if (result.success) {
+        setSuccess(result.message || "Inquiry submitted successfully! We'll contact you soon.");
+        // Reset form
+        setFormData({
+          name: "",
+          phone: "",
+          course: "",
+          message: "",
+        });
+      } else {
+        setError(result.message || "Failed to submit. Please try again.");
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <section className="py-28 bg-white">
 
@@ -158,21 +240,36 @@ export default function AdmissionQuery() {
           className="bg-softbg p-10 md:p-14 rounded-2xl shadow-xl border border-gray-200 mt-8 lg:mt-10"
         >
 
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleSubmit} >
+            {/* Success Message */}
+            {success && (
+              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-xl text-sm">
+                {success}
+              </div>
+            )}
 
+            {/* Error Message */}
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">
+                {error}
+              </div>
+            )}
             <input
               type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Full Name"
               className="w-full px-5 py-3.5 rounded-xl border border-gray-300 bg-white
               placeholder:text-gray-400 text-dark
                focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary
                transition"
             />
-
-            
-
             <input
               type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               placeholder="Phone Number"
               className="w-full px-5 py-3.5 rounded-xl border border-gray-300 bg-white
                placeholder:text-gray-400 text-dark
@@ -181,18 +278,24 @@ export default function AdmissionQuery() {
             />
 
             <select
-              className="w-full px-5 py-3.5 rounded-xl border border-gray-300 bg-white text-dark
+            name="course"
+            value={formData.course}
+            onChange={handleChange}
+            className="w-full px-5 py-3.5 rounded-xl border border-gray-300 bg-white text-dark
               focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary
               transition cursor-pointer"
             >
-              <option>Select Course</option>
-              <option>GNM Nursing</option>
-              <option>B.Sc Nursing</option>
-              <option>B Pharma</option>
-              <option>D Pharma</option>
+              <option value="">Select Course</option>
+              <option value="GNM Nursing">GNM Nursing</option>
+              <option value="B.Sc Nursing">B.Sc Nursing</option>
+              <option value="B Pharma">B Pharma</option>
+              <option value="D Pharma">D Pharma</option>
             </select>
 
             <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
               rows={4}
               placeholder="Your Message"
               className="w-full px-5 py-3.5 rounded-xl border border-gray-300 bg-white
@@ -203,11 +306,19 @@ export default function AdmissionQuery() {
 
             <button
               type="submit"
+              disabled={isLoading}
               className="w-full bg-primary hover:bg-primary/90 text-white py-3.5 rounded-xl font-semibold
               shadow-md hover:shadow-lg hover:-translate-y-[1px]
-              transition-all duration-300"
+              transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Submit Inquiry
+              {isLoading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <Loader2 className="animate-spin" size={20} />
+                  Submitting...
+                </span>
+              ) : (
+                "Submit Inquiry"
+              )}
             </button>
 
           </form>

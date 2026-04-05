@@ -1,34 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import GalleryForm from "./GalleryForm";
 import ConfirmModal from "@/components/admin/common/ConfirmModal";
 
-const initialImages = [
-  "/images/hospitals/h1.jpg",
-  "/images/hospitals/h2.jpg",
-  "/images/hospitals/h2.jpg",
-  "/images/hospitals/h2.jpg",
-  "/images/hospitals/h2.jpg",
-  "/images/hospitals/h2.jpg",
-];
+interface GalleryItem {
+  id: number;
+  image: string;
+  imageId: string;
+}
 
 export default function GalleryTable() {
-  const [images, setImages] = useState(initialImages);
+  const [images, setImages] = useState<GalleryItem[]>([]);
   const [open, setOpen] = useState(false);
-  const [deleteItem, setDeleteItem] = useState<string | null>(null);
+  const [deleteItem, setDeleteItem] = useState<GalleryItem | null>(null);
 
-  const handleDelete = () => {
+  const fetchGallery = async () => {
+    try {
+      const res = await axios.get("/api/gallery");
+      setImages(res.data.data);
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchGallery();
+  }, []);
+
+  const handleDelete = async () => {
     if (!deleteItem) return;
 
-    setImages((prev) => prev.filter((img) => img !== deleteItem));
-    setDeleteItem(null);
+    try {
+      const token = localStorage.getItem("token");
+      await axios.delete(`/api/gallery/${deleteItem.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setImages((prev) => prev.filter((item) => item.id !== deleteItem.id));
+      setDeleteItem(null);
+    } catch (error) {
+      console.error("Delete error:", error);
+    }
   };
 
   return (
     <div className="space-y-6">
-
-      {/* HEADER */}
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold">Gallery</h2>
 
@@ -40,31 +60,34 @@ export default function GalleryTable() {
         </button>
       </div>
 
-      {/* GRID */}
-      <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
-
-        {images.map((img, i) => (
-          <div key={i} className="relative group">
-
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {images.map((item) => (
+          <div key={item.id} className="relative group">
             <img
-              src={img}
-              className="h-60 w-full object-cover rounded"
+              src={item.image}
+              alt=""
+              className="h-32 w-full object-cover rounded"
             />
 
             <button
-              onClick={() => setDeleteItem(img)}
+              type="button"
+              onClick={() => setDeleteItem(item)}
               className="absolute top-2 right-2 bg-black/50 text-white px-2 py-1 text-xs rounded opacity-0 group-hover:opacity-100"
             >
               Delete
             </button>
-
           </div>
         ))}
-
       </div>
 
-      {/* MODALS */}
-      {open && <GalleryForm onClose={() => setOpen(false)} />}
+      {open && (
+        <GalleryForm
+          onClose={() => {
+            setOpen(false);
+            fetchGallery();
+          }}
+        />
+      )}
 
       {deleteItem && (
         <ConfirmModal
@@ -74,7 +97,6 @@ export default function GalleryTable() {
           onClose={() => setDeleteItem(null)}
         />
       )}
-
     </div>
   );
 }
