@@ -5,7 +5,7 @@ import { deleteImage } from "@/lib/cloudinary";
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = checkAuth(req);
@@ -17,10 +17,11 @@ export async function DELETE(
       );
     }
 
-    const id = Number(params.id);
+   const { id } = await params; // ✅ FIX HERE
+  const numericId = Number(id);
 
     const gallery = await prisma.gallery.findUnique({
-      where: { id },
+      where: { id: numericId },
     });
 
     if (!gallery) {
@@ -41,7 +42,7 @@ export async function DELETE(
 
     // 🧠 Delete from DB
     await prisma.gallery.delete({
-      where: { id },
+      where: { id: numericId },
     });
 
     return NextResponse.json({
