@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import TestimonialForm from "./TestimonialForm";
 import ConfirmModal from "@/components/admin/common/ConfirmModal";
 
@@ -12,27 +13,45 @@ type Testimonial = {
   image?: string;
 };
 
-const initialData: Testimonial[] = [
-  {
-    id: 1,
-    name: "Sanjana",
-    course: "Pharmacy",
-    message:
-      "The practical training and guidance from teachers have been outstanding.",
-    image: "/images/hospitals/h1.jpg",
-  },
-];
 
 export default function TestimonialTable() {
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState<Testimonial[]>([]);
   const [open, setOpen] = useState(false);
   const [deleteItem, setDeleteItem] = useState<Testimonial | null>(null);
 
-  const handleDelete = () => {
+    const fetchTestimonials = async () => {
+    try {
+      const res = await axios.get("/api/testimonials");
+      setData(res.data.data);
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTestimonials();
+  }, []);
+
+  const handleDelete = async () => {
     if (!deleteItem) return;
 
-    setData((prev) => prev.filter((d) => d.id !== deleteItem.id));
-    setDeleteItem(null);
+    try {
+      const token = localStorage.getItem("token");
+
+      await axios.delete(`/api/testimonials/${deleteItem.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setData((prev) =>
+        prev.filter((d) => d.id !== deleteItem.id)
+      );
+
+      setDeleteItem(null);
+    } catch (error) {
+      console.error("Delete error:", error);
+    }
   };
 
   return (
@@ -107,7 +126,14 @@ export default function TestimonialTable() {
       </div>
 
       {/* MODALS */}
-      {open && <TestimonialForm onClose={() => setOpen(false)} />}
+      {open && (
+        <TestimonialForm
+          onClose={() => {
+            setOpen(false);
+            fetchTestimonials(); 
+          }}
+        />
+      )}
 
       {deleteItem && (
         <ConfirmModal

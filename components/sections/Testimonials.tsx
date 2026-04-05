@@ -1,54 +1,35 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import axios from "axios"
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 
-import "swiper/css";
-import "swiper/css/pagination";
-
-const testimonials = [
-  {
-    name: "Anjali Sharma",
-    course: "GNM Nursing",
-    text: "TEESTA has provided me with the best learning environment. The faculty is supportive and the clinical exposure helped me gain real confidence.",
-    image: "/images/testimonials/t1.jpg",
-  },
-  {
-    name: "Ritika Das",
-    course: "B.Sc Nursing",
-    text: "The infrastructure and teaching methods are excellent. I feel fully prepared for my career in healthcare.",
-    image: "/images/testimonials/t2.jpg",
-  },
-  {
-    name: "Priya Kumari",
-    course: "Pharmacy",
-    text: "The practical training and guidance from teachers have been outstanding. TEESTA truly focuses on student growth.",
-    image: "/images/testimonials/t3.jpg",
-  },
-  {
-    name: "Sanjana",
-    course: "Pharmacy",
-    text: "The practical training and guidance from teachers have been outstanding. TEESTA truly focuses on student growth.",
-    image: "/images/testimonials/t3.jpg",
-  },
-  {
-    name: "Neha",
-    course: "Pharmacy",
-    text: "The practical training and guidance from teachers have been outstanding. TEESTA truly focuses on student growth.",
-    image: "/images/testimonials/t3.jpg",
-  },
-  {
-    name: "Anisha",
-    course: "Pharmacy",
-    text: "The practical training and guidance from teachers have been outstanding. TEESTA truly focuses on student growth.",
-    image: "/images/testimonials/t3.jpg",
-  },
-];
 
 export default function Testimonials() {
+    const [testimonials, setTestimonials] = useState<any[]>([]);
+
+  const fetchTestimonials = async () => {
+    try {
+      const res = await axios.get("/api/testimonials");
+      setTestimonials(res.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTestimonials();
+      const interval = setInterval(() => {
+    fetchTestimonials(); // every 5 sec
+  }, 5000);
+  return () => clearInterval(interval);
+  }, []);
+
+  if (testimonials.length === 0) return null;
   return (
     <section className="py-28 glass-testimonials">
 
@@ -75,7 +56,7 @@ export default function Testimonials() {
           <div className="w-20 h-[3px] bg-gradient-to-r from-[#4FC3F7] to-[#1E6FA8] mx-auto rounded-full"></div>
         </motion.div>
 
-        {/* 🔥 SWIPER (ATHENA STYLE) */}
+        {/*  SWIPER */}
         <Swiper
           modules={[Autoplay, Pagination]}
           spaceBetween={30}
@@ -93,8 +74,8 @@ export default function Testimonials() {
           }}
         >
 
-          {testimonials.map((item, index) => (
-            <SwiperSlide key={index}>
+          {testimonials.map((item) => (
+            <SwiperSlide key={item.id}>
 
               <motion.div
                 initial={{ opacity: 0, y: 80 }}
@@ -123,7 +104,7 @@ export default function Testimonials() {
 
                   {/* TEXT */}
                   <p className="text-white/90 text-sm leading-relaxed mb-6">
-                    “{item.text}”
+                    “{item.message}”
                   </p>
 
                   {/* USER */}
