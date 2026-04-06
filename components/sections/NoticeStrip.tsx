@@ -2,43 +2,44 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+import NewsPreviewModal from "@/components/resources/NewsPreviewModal";
 
 import "swiper/css";
 
+interface NoticeItem {
+  title: string;
+  description: string;
+  pdf?: string;
+}
+
 const notices = [
-    {
-      title: "Examination Notice",
-      desc: "Final examination schedule for GNM, B.Sc Nursing, and Pharmacy courses has been published. Students are advised to check the timetable and prepare accordingly.",
-    },
-    {
-      title: "Admission Open 2026",
-      desc: "Applications are now open for the 2026 academic session. Interested candidates can apply for Nursing and Pharmacy programs as per eligibility criteria.",
-    },
-    {
-      title: "Clinical Training Update",
-      desc: "New hospital-based training modules have been introduced to enhance practical exposure for nursing students across all years.",
-    },
-    {
-      title: "Academic Session Commencement",
-      desc: "The new academic session will commence from July. Students are required to complete admission formalities before the deadline.",
-    },
-    {
-      title: "Workshop on Patient Care",
-      desc: "A practical workshop on patient care and clinical procedures will be conducted for students to strengthen hands-on skills.",
-    },
-  ];
+  {
+    title: "Examination Notice",
+    description:
+      "Final examination schedule for GNM, B.Sc Nursing, and Pharmacy courses has been published.",
+    pdf: "/pdfs/exam.pdf", // ✅ added
+  },
+  {
+    title: "Admission Open 2026",
+    description:
+      "Applications are now open for the 2026 academic session.",
+  },
+  {
+    title: "Clinical Training Update",
+    description:
+      "New hospital-based training modules have been introduced.",
+    pdf: "/pdfs/training.pdf", // ✅ added
+  },
+];
 
 export default function NoticeStrip() {
-  const router = useRouter();
+  const [selectedNotice, setSelectedNotice] = useState<NoticeItem | null>(null);
 
   return (
     <section className="relative z-30 mt-10 mb-6 px-6">
-
       <div className="container-custom">
-
         <div className="max-w-3xl mx-auto">
-
           <Swiper
             modules={[Autoplay]}
             slidesPerView={1}
@@ -51,17 +52,15 @@ export default function NoticeStrip() {
           >
             {notices.map((item, index) => (
               <SwiperSlide key={index}>
-
                 {/* 🔥 CLICKABLE BAR */}
                 <div
-                  onClick={() => router.push("/resources/news")}
+                  onClick={() => setSelectedNotice(item)}
                   className="cursor-pointer group
                              bg-gradient-to-r from-[#4FC3F7] to-[#1E6FA8]
                              text-center rounded-xl px-8 py-5
                              shadow-md hover:shadow-xl
-                             transition-all duration-300"
+                             transition-all duration-300 hover:scale-[1.01]"
                 >
-
                   {/* TITLE */}
                   <h3 className="text-white font-semibold text-base md:text-lg tracking-wide">
                     {item.title}
@@ -69,24 +68,27 @@ export default function NoticeStrip() {
 
                   {/* DESCRIPTION */}
                   <p className="text-white/90 text-sm mt-2">
-                    {item.desc}
+                    {item.description}
                   </p>
+
+                  
 
                   {/* SUBTLE HOVER INDICATOR */}
                   <div className="mt-3 text-xs text-white/70 opacity-0 group-hover:opacity-100 transition">
                     Click to view more →
                   </div>
-
                 </div>
-
               </SwiperSlide>
             ))}
           </Swiper>
-
         </div>
-
       </div>
 
+      {/* 🔥 MODAL */}
+      <NewsPreviewModal
+        news={selectedNotice}
+        onClose={() => setSelectedNotice(null)}
+      />
     </section>
   );
 }
