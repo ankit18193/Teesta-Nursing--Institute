@@ -17,7 +17,7 @@ export default function AdminLogin() {
     setError("");
 
     try {
-      console.log("Sending login request to:", "/api/auth/login");
+      // console.log("Sending login request to:", "/api/auth/login");
       console.log("Email:", email);
       
       // Use fetch directly instead of api client for debugging
@@ -39,8 +39,11 @@ export default function AdminLogin() {
 
       if (response.ok && data.token) {
         localStorage.setItem("token", data.token);
+        setLoading(false);
         console.log("Token stored, redirecting...");
-        router.push("/admin");
+        // router.push("/admin");
+        //  window.location.href = "/admin";
+        router.replace("/admin");
       } else {
         setError(data.message || "Login failed. Please check your credentials.");
         setLoading(false);
@@ -105,7 +108,7 @@ export default function AdminLogin() {
             className="w-full border border-white/30 bg-white/30 px-4 py-3 rounded-xl backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-blue-800 transition"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
+            onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
           />
 
           <div className="relative">
@@ -115,7 +118,7 @@ export default function AdminLogin() {
               className="w-full border border-white/30 bg-white/30 px-4 py-3 rounded-xl backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-blue-800 transition"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
+              onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
             />
 
             <button
