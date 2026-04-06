@@ -118,7 +118,7 @@ export default function GNMPage() {
           </p>
         </div>
 
-        {/* 🔥 RESERVATION */}
+        {/* 🔥 RESERVATION
         <div className="border rounded-xl p-6 shadow-sm">
           <h3 className="text-lg font-semibold text-primary mb-4">
             Reservation Policy
@@ -141,7 +141,7 @@ export default function GNMPage() {
               Reservations are included within sanctioned seats (not additional)
             </li>
           </ul>
-        </div>
+        </div> */}
 
         {/* 🔥 ADMISSION RULES */}
         <div className="border rounded-xl p-6 shadow-sm">

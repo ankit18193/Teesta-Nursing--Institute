@@ -7,10 +7,12 @@ import AdmissionQuery from "@/components/sections/AdmissionQuery";
 import Testimonials from "@/components/sections/Testimonials";
 import NoticeStrip from "@/components/sections/NoticeStrip";
 import Hospitals from "@/components/sections/Hospitals";
+import EnquiryWrapper from "@/components/common/EnquiryWrapper";
 
 export default function Home() {
   return (
     <>
+    <EnquiryWrapper>
       <Hero />
       <InstitutesSection />
       <NoticeStrip/>
@@ -20,6 +22,7 @@ export default function Home() {
       <Hospitals/>
       <AdmissionQuery/>
       <Testimonials/>
+      </EnquiryWrapper>
       
 
     </>
