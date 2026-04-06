@@ -1,14 +1,15 @@
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
+import { NextResponse,NextRequest } from "next/server";
 import { checkAuth } from "@/lib/auth";
 
 // PATCH
 export async function PATCH(
-  req: Request,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
           const user=checkAuth(req);
+          const {id}= await params;
           if (!user) {
         return NextResponse.json(
           { success: false, message: "Unauthorized" },
@@ -18,7 +19,7 @@ export async function PATCH(
     const body = await req.json();
 
     const notice = await prisma.notice.update({
-      where: { id: Number(params.id) },
+      where: { id: Number(id) },
       data: body,
     });
 
@@ -38,11 +39,12 @@ export async function PATCH(
 
 // DELETE
 export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
           const user=checkAuth(req);
+          const {id}= await params;
           if (!user) {
     return NextResponse.json(
       { success: false, message: "Unauthorized" },
@@ -50,7 +52,7 @@ export async function DELETE(
     );
   }
     await prisma.notice.delete({
-      where: { id: Number(params.id) },
+      where: { id: Number(id) },
     });
 
     return NextResponse.json({

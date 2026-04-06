@@ -1,15 +1,15 @@
 import { prisma } from "@/lib/prisma";
-import { NextResponse } from "next/server";
+import { NextResponse,NextRequest } from "next/server";
 import { checkAuth } from "@/lib/auth";
 
 // DELETE course
 export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = checkAuth(req);
-
+    const {id}= await params;
     if (!user) {
       return NextResponse.json(
         { success: false, message: "Unauthorized" },
@@ -18,7 +18,7 @@ export async function DELETE(
     }
 
     await prisma.course.delete({
-      where: { id: Number(params.id) },
+      where: { id: Number(id) },
     });
 
     return NextResponse.json({
