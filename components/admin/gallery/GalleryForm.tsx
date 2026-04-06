@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import axios from "axios";
+import api from "@/lib/api"
 
 export default function GalleryForm({ onClose }: { onClose: () => void }) {
   const [previews, setPreviews] = useState<string[]>([]);
@@ -33,7 +34,6 @@ export default function GalleryForm({ onClose }: { onClose: () => void }) {
 
   const handleUpload = async () => {
     try {
-      const token = localStorage.getItem("token");
       if (files.length === 0) {
         alert("Please select images");
         return;
@@ -47,30 +47,20 @@ export default function GalleryForm({ onClose }: { onClose: () => void }) {
           const base64 = await toBase64(file);
 
           // Step 1: Upload to Cloudinary
-          const uploadRes = await axios.post(
-                       "/api/upload",
+          const uploadRes = await api.post(
+                       "/upload",
                     {
                       image: base64,
                     },
-                    {
-                      headers: {
-                      Authorization: `Bearer ${token}`,
-                      },
-                    }
           );
 
           const { url, public_id } = uploadRes.data.data;
 
           // Step 2: Save to DB
-          await axios.post("/api/gallery", {
+          await api.post("/gallery", {
             image: url,
             imageId: public_id,
           },
-            {
-              headers: {
-              Authorization: `Bearer ${token}`,
-              },
-          }
         );
         })
       );

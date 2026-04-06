@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import TestimonialForm from "./TestimonialForm";
 import ConfirmModal from "@/components/admin/common/ConfirmModal";
+import api from "@/lib/api"
 
 type Testimonial = {
   id: number;
@@ -21,7 +22,7 @@ export default function TestimonialTable() {
 
     const fetchTestimonials = async () => {
     try {
-      const res = await axios.get("/api/testimonials");
+      const res = await api.get("/testimonials");
       setData(res.data.data);
     } catch (error) {
       console.error("Fetch error:", error);
@@ -36,13 +37,7 @@ export default function TestimonialTable() {
     if (!deleteItem) return;
 
     try {
-      const token = localStorage.getItem("token");
-
-      await axios.delete(`/api/testimonials/${deleteItem.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await api.delete(`/testimonials/${deleteItem.id}`);
 
       setData((prev) =>
         prev.filter((d) => d.id !== deleteItem.id)

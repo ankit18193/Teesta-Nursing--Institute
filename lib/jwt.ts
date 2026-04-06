@@ -1,6 +1,11 @@
 import jwt from "jsonwebtoken";
 
-export function generateToken(payload: any) {
+type TokenPayload = {
+  id: number;
+  email: string;
+};
+
+export function generateToken(payload: TokenPayload) {
   return jwt.sign(payload, process.env.JWT_SECRET!, {
     expiresIn: "7d",
   });

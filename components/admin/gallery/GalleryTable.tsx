@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import GalleryForm from "./GalleryForm";
 import ConfirmModal from "@/components/admin/common/ConfirmModal";
+import api from "@/lib/api"
 
 interface GalleryItem {
   id: number;
@@ -18,7 +19,7 @@ export default function GalleryTable() {
 
   const fetchGallery = async () => {
     try {
-      const res = await axios.get("/api/gallery");
+      const res = await api.get("/gallery");
       setImages(res.data.data);
     } catch (error) {
       console.error("Fetch error:", error);
@@ -33,11 +34,7 @@ export default function GalleryTable() {
     if (!deleteItem) return;
 
     try {
-      const token = localStorage.getItem("token");
-      await axios.delete(`/api/gallery/${deleteItem.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      await api.delete(`/gallery/${deleteItem.id}`, {
       });
 
       setImages((prev) => prev.filter((item) => item.id !== deleteItem.id));
