@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import axios from "axios";
+import api from "@/lib/api"
 
 type Props = {
   onClose: () => void;
@@ -37,8 +38,6 @@ export default function TestimonialForm({ onClose }: Props) {
         return;
       }
 
-      const token = localStorage.getItem("token");
-
       let imageUrl = "";
       let imageId = "";
 
@@ -46,14 +45,9 @@ export default function TestimonialForm({ onClose }: Props) {
       if (file) {
         const base64 = await toBase64(file);
 
-        const uploadRes = await axios.post(
-          "/api/upload",
+        const uploadRes = await api.post(
+          "/upload",
           { image: base64 },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
         );
 
         imageUrl = uploadRes.data.data.url;
@@ -61,8 +55,8 @@ export default function TestimonialForm({ onClose }: Props) {
       }
 
       //  Save testimonial
-      await axios.post(
-        "/api/testimonials",
+      await api.post(
+        "/testimonials",
         {
           name,
           course,
@@ -70,11 +64,6 @@ export default function TestimonialForm({ onClose }: Props) {
           image: imageUrl,
           imageId,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
       );
 
       alert("Testimonial added");

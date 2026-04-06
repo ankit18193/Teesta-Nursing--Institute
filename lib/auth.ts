@@ -11,5 +11,7 @@ export function checkAuth(req: Request) {
 
   const decoded = verifyToken(token);
 
+  if(!decoded) return null;
+
   return decoded;
 }

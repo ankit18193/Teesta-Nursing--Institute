@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
@@ -9,58 +10,72 @@ export default function AdminLogin() {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const router = useRouter();
+
   const handleLogin = async () => {
     setLoading(true);
     setError("");
 
     try {
-      const res = await fetch("/api/admin/login", {
+      console.log("Sending login request to:", "/api/auth/login");
+      console.log("Email:", email);
+      
+      // Use fetch directly instead of api client for debugging
+      const response = await fetch("/api/auth/login", {
         method: "POST",
-        body: JSON.stringify({ email, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
       });
 
-      if (res.ok) {
-        window.location.href = "/admin";
-      } else {
-        setError("Invalid email or password");
-      }
-    } catch (err) {
-      setError("Something went wrong");
-    }
+      console.log("Response status:", response.status);
+      
+      const data = await response.json();
+      console.log("Response data:", data);
 
-    setLoading(false);
+      if (response.ok && data.token) {
+        localStorage.setItem("token", data.token);
+        console.log("Token stored, redirecting...");
+        router.push("/admin");
+      } else {
+        setError(data.message || "Login failed. Please check your credentials.");
+        setLoading(false);
+      }
+    } catch (error: any) {
+      console.error("Login error:", error);
+      setError("Network error. Please check if server is running.");
+      setLoading(false);
+    }
   };
 
   return (
     <div className="relative min-h-screen flex items-center justify-center 
                 bg-gradient-to-br from-blue-200 via-white to-blue-300 overflow-hidden">
 
-      {/* 🌫️ Background Watermark */}
+      {/* Background Watermark */}
       <img
         src="/images/logos/Teesta.png"
         alt="bg-logo"
         className="absolute opacity-[0.08] w-[1000px] max-w-[90%]"
       />
 
-      {/* 🔐 Login Card */}
+      {/* Login Card */}
       <div className="relative w-full max-w-md p-10 rounded-3xl
                 bg-white/5
                 backdrop-blur-3xl
                 border border-white/20
                 shadow-[0_12px_45px_rgba(0,0,0,0.2)]">
 
-        {/* ✨ Top Light Reflection */}
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/25 via-transparent to-transparent pointer-events-none" />
-
-        {/* 💎 Subtle Inner Glass Tint */}
         <div className="absolute inset-0 rounded-3xl bg-white/5 pointer-events-none" />
-
-        {/* 🌫️ Soft Glow (depth) */}
         <div className="absolute -top-12 -left-12 w-52 h-52 bg-white/20 rounded-full blur-3xl opacity-20 pointer-events-none" />
 
-        {/* 🏫 Branding */}
+        {/* Branding */}
         <div className="relative flex flex-col items-center text-center mb-8">
-
           <img
             src="/images/logos/Teesta.png"
             alt="Teesta Nursing Institute"
@@ -76,23 +91,21 @@ export default function AdminLogin() {
           <p className="text-[13px] md:text-sm font-semibold uppercase tracking-[0.18em] text-slate-700 mt-2">
             GROUP OF INSTITUTION
           </p>
-
         </div>
 
-        {/* Title */}
         <h2 className="text-2xl font-bold text-center mb-6 text-blue-600">
           Admin Login
         </h2>
 
         {/* Form */}
         <div className="relative space-y-5">
-
           <input
             type="email"
             placeholder="Email address"
             className="w-full border border-white/30 bg-white/30 px-4 py-3 rounded-xl backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-blue-800 transition"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
           />
 
           <div className="relative">
@@ -102,6 +115,7 @@ export default function AdminLogin() {
               className="w-full border border-white/30 bg-white/30 px-4 py-3 rounded-xl backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-blue-800 transition"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
             />
 
             <button
@@ -121,11 +135,10 @@ export default function AdminLogin() {
             onClick={handleLogin}
             disabled={loading}
             className="w-full bg-primary text-white py-3 rounded-xl font-semibold
-       shadow-md
-       hover:shadow-lg hover:-translate-y-[1px] hover:bg-primary/90
-       active:translate-y-[1px] active:shadow-sm
-       transition-all duration-200 ease-in-out 
-       disabled:opacity-60 disabled:cursor-not-allowed"
+              shadow-md hover:shadow-lg hover:-translate-y-[1px] hover:bg-primary/90
+              active:translate-y-[1px] active:shadow-sm
+              transition-all duration-200 ease-in-out 
+              disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
@@ -137,7 +150,6 @@ export default function AdminLogin() {
             Reset here
           </span>
         </p>
-
       </div>
     </div>
   );
