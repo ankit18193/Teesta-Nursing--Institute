@@ -1,17 +1,45 @@
+"use client";
+
 import CoursesLayout from "@/components/courses/CoursesLayout";
 
 export default function DPharmaPage() {
   return (
     <CoursesLayout title="D.Pharm">
 
-      <div className="space-y-14">
+      <div className="space-y-16">
 
-        {/* 🔥 HERO SECTION */}
+        {/* 🔥 HERO (ADDED) */}
+        <section className="relative h-[300px] md:h-[380px] rounded-3xl overflow-hidden flex items-center">
+
+          <div className="absolute inset-0">
+            <img
+              src="/images/courses/dpharma.png"
+              alt="D.Pharm"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"></div>
+          </div>
+
+          <div className="relative z-10 p-6 md:p-16 max-w-3xl mb-5px text-white space-y-3">
+            <h1 className="text-3xl md:text-4xl font-bold">
+              Diploma in Pharmacy (D.Pharm)
+            </h1>
+
+            <p className="text-sm md:text-base opacity-90">
+              Building a strong foundation in pharmaceutical sciences with practical
+              skills, industry exposure, and real-world healthcare training.
+            </p>
+          </div>
+
+        </section>
+
+
+        {/* 🔥 EXISTING HERO CONTENT (UNCHANGED) */}
         <div className="grid md:grid-cols-2 gap-10 items-center">
 
-          <div className="overflow-hidden rounded-2xl shadow-md">
+          <div className="overflow-hidden rounded-2xl shadow-lg">
             <img
-              src="/images/courses/dpharma.jpg"
+              src="/images/courses/dp.png"
               alt="D.Pharm"
               className="w-full h-[320px] object-cover hover:scale-105 transition duration-500"
             />
@@ -35,10 +63,11 @@ export default function DPharmaPage() {
 
         </div>
 
-        {/* 🔥 HIGHLIGHTS */}
+
+        {/* 🔥 HIGHLIGHTS (UPGRADED UI) */}
         <div className="grid md:grid-cols-3 gap-6">
 
-          <div className="bg-white border rounded-xl p-6 shadow-sm hover:shadow-md transition">
+          <div className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <h3 className="text-lg font-semibold text-primary mb-2">
               Practical Training
             </h3>
@@ -47,7 +76,7 @@ export default function DPharmaPage() {
             </p>
           </div>
 
-          <div className="bg-white border rounded-xl p-6 shadow-sm hover:shadow-md transition">
+          <div className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <h3 className="text-lg font-semibold text-primary mb-2">
               Quick Career Entry
             </h3>
@@ -56,7 +85,7 @@ export default function DPharmaPage() {
             </p>
           </div>
 
-          <div className="bg-white border rounded-xl p-6 shadow-sm hover:shadow-md transition">
+          <div className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <h3 className="text-lg font-semibold text-primary mb-2">
               Industry Ready
             </h3>
@@ -67,8 +96,9 @@ export default function DPharmaPage() {
 
         </div>
 
-        {/* 🔥 INSTITUTION ADVANTAGE (ADDED) */}
-        <div className="bg-primary/5 border border-primary/10 rounded-xl p-6">
+
+        {/* 🔥 INSTITUTION ADVANTAGE */}
+        <div className="bg-gradient-to-br from-primary/10 to-white border border-primary/20 rounded-2xl p-6 shadow-sm">
           <h3 className="text-lg font-semibold text-primary mb-3">
             Our Institutional Advantage
           </h3>
@@ -83,8 +113,9 @@ export default function DPharmaPage() {
           </p>
         </div>
 
-        {/* 🔥 ELIGIBILITY (PCI BASED - FIXED) */}
-        <div className="border rounded-xl p-6 shadow-sm">
+
+        {/* 🔥 ELIGIBILITY */}
+        <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition">
           <h3 className="text-lg font-semibold text-primary mb-4">
             Eligibility Criteria
           </h3>
@@ -106,8 +137,9 @@ export default function DPharmaPage() {
           </ul>
         </div>
 
-        {/* 🔥 ADMISSION GUIDELINES (ADDED) */}
-        <div className="border rounded-xl p-6 shadow-sm">
+
+        {/* 🔥 ADMISSION */}
+        <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition">
           <h3 className="text-lg font-semibold text-primary mb-4">
             Admission Guidelines
           </h3>
@@ -119,10 +151,11 @@ export default function DPharmaPage() {
           </ul>
         </div>
 
+
         {/* 🔥 COURSE DETAILS */}
         <div className="grid md:grid-cols-2 gap-8">
 
-          <div className="border rounded-xl p-6 shadow-sm">
+          <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition">
             <h3 className="text-lg font-semibold text-primary mb-2">
               Duration
             </h3>
@@ -131,7 +164,7 @@ export default function DPharmaPage() {
             </p>
           </div>
 
-          <div className="border rounded-xl p-6 shadow-sm">
+          <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition">
             <h3 className="text-lg font-semibold text-primary mb-2">
               Career Opportunities
             </h3>
@@ -141,7 +174,7 @@ export default function DPharmaPage() {
             </p>
           </div>
 
-          <div className="border rounded-xl p-6 shadow-sm md:col-span-2">
+          <div className="border rounded-2xl p-6 shadow-sm md:col-span-2 hover:shadow-md transition">
             <h3 className="text-lg font-semibold text-primary mb-2">
               Training & Exposure
             </h3>
@@ -154,7 +187,8 @@ export default function DPharmaPage() {
 
         </div>
 
-        {/* 🔥 EXTRA DESCRIPTION */}
+
+        {/* 🔥 EXTRA */}
         <div className="max-w-3xl">
           <p className="text-gray-600 leading-relaxed text-[15px]">
             The D.Pharm program serves as a strong foundation for a career in

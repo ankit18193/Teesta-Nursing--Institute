@@ -16,7 +16,7 @@ export default async function HospitalPage({
     const hospitalData: Record<string, any> = {
         mitra: {
             name: "Mitra Hospital",
-            image: "/images/hospitals/h1.jpg",
+            image: "/images/hospitals/mitra.png",
 
             about:
                 "Mitra Hospital is a reputed multi-speciality healthcare center located in Siliguri, known for delivering reliable and patient-focused medical services. The hospital offers a combination of experienced medical professionals, modern diagnostic facilities, and a patient-friendly environment. It caters to a wide range of healthcare needs including preventive care, diagnosis, treatment, and emergency services. With a commitment to affordability and accessibility, Mitra Hospital continues to serve both urban and nearby rural populations effectively.",
@@ -50,7 +50,7 @@ export default async function HospitalPage({
 
         malbazar: {
             name: "Malbazar Super Hospital",
-            image: "/images/hospitals/h2.jpg",
+            image: "/images/hospitals/msh.jpg",
 
             about:
                 "Malbazar Super Hospital is an important healthcare facility serving the Malbazar region and surrounding rural areas of Jalpaiguri district. The hospital plays a crucial role in providing accessible and essential medical services to the local population. Equipped with basic diagnostic and treatment facilities, it supports both outpatient and inpatient care. The hospital is especially significant for patients from nearby tea garden communities and rural regions who rely on it for timely medical attention and emergency services.",
@@ -83,7 +83,7 @@ export default async function HospitalPage({
 
         sun: {
             name: "Sun Hospital & Diagnostic Center",
-            image: "/images/hospitals/h3.jpg",
+            image: "/images/hospitals/sun.png",
 
             about:
                 "Sun Hospital & Diagnostic Center is a modern healthcare facility located in Siliguri, focused on providing accurate diagnostic and essential medical services. The center is equipped with standard diagnostic technologies and supports a range of tests and consultations for patients. It plays an important role in early detection, routine health checkups, and supporting doctors with reliable reports. With an emphasis on efficiency and patient convenience, the center serves individuals seeking quick and dependable diagnostic solutions.",
@@ -115,7 +115,7 @@ export default async function HospitalPage({
 
         hope: {
             name: "Hope & Hill Cancer Hospital",
-            image: "/images/hospitals/h4.jpg",
+            image: "/images/hospitals/hh.jpg",
 
             about:
                 "Hope & Hill Cancer Hospital is a specialized healthcare facility dedicated to oncology care in the Darjeeling hills. The hospital focuses on providing essential cancer diagnosis, treatment, and supportive care services to patients in the region. It plays a vital role in making oncology services more accessible to people living in hilly and remote areas, reducing the need to travel to distant metropolitan cities. With a patient-centered approach, the hospital aims to support individuals and families throughout their treatment journey with care and compassion.",
@@ -149,7 +149,7 @@ export default async function HospitalPage({
 
         "siliguri-subdivisional": {
             name: "Siliguri Sub-Divisional Hospital",
-            image: "/images/hospitals/h5.jpg",
+            image: "/images/hospitals/ssd.jpg",
 
             about:
                 "Siliguri Sub-Divisional Hospital is a key government healthcare institution serving the Siliguri region and surrounding areas. It provides a wide range of essential medical services to the public, with a strong focus on affordability and accessibility. The hospital caters to a large number of patients daily, including those from nearby rural and semi-urban communities. It plays an important role in primary and secondary healthcare delivery, maternal services, and emergency care within the region.",
@@ -182,7 +182,7 @@ export default async function HospitalPage({
 
         "kurseong-subdivisional": {
             name: "Kurseong Sub-Divisional Hospital",
-            image: "/images/hospitals/h6.jpg",
+            image: "/images/hospitals/ksdh.jpg",
 
             about:
                 "Kurseong Sub-Divisional Hospital is an important government healthcare facility serving Kurseong and nearby hill regions of Darjeeling district. The hospital provides essential medical services to residents in hilly and often hard-to-reach areas, ensuring access to basic healthcare without the need to travel to larger cities. It handles a steady flow of patients for general treatment, emergency care, and maternal health services, playing a crucial role in the region’s public healthcare system.",
@@ -214,7 +214,7 @@ export default async function HospitalPage({
 
         astha: {
             name: "Astha Hospital",
-            image: "/images/hospitals/h7.jpg",
+            image: "/images/hospitals/astha.png",
 
             about:
                 "Astha Hospital is a private healthcare facility in Siliguri offering a range of medical services with a focus on patient comfort and efficient care delivery. The hospital combines general medical treatment with diagnostic and surgical support, catering to both outpatient and inpatient needs. With an emphasis on personalized attention and a patient-friendly environment, Astha Hospital serves individuals and families seeking reliable and convenient healthcare services in the city.",
@@ -246,7 +246,7 @@ export default async function HospitalPage({
 
         tufanganj: {
             name: "Tufanganj Hospital",
-            image: "/images/hospitals/h8.jpg",
+            image: "/images/hospitals/tufan.png",
 
             about:
                 "Tufanganj Hospital is a regional healthcare facility serving the town of Tufanganj and surrounding rural areas in Cooch Behar district. The hospital provides essential medical services to a large population that relies on it for day-to-day healthcare needs. It plays a significant role in delivering primary and basic secondary care, including emergency support and routine treatments. The hospital is especially important for nearby villages, offering accessible medical assistance without the need to travel long distances.",
@@ -277,7 +277,7 @@ export default async function HospitalPage({
 
         "malbazar-general": {
             name: "Malbazar Hospital",
-            image: "/images/hospitals/h9.jpg",
+            image: "/images/hospitals/mh.jpg",
 
             about:
                 "Malbazar Hospital is a general healthcare facility serving the Malbazar region of Jalpaiguri district. It provides primary and basic secondary medical services to the local population, including nearby rural and semi-urban communities. The hospital handles a steady flow of patients for routine treatment, emergency care, and basic diagnostics. It plays an important role in meeting day-to-day healthcare needs and acts as a first point of contact for many patients in the area.",
@@ -322,7 +322,7 @@ export default async function HospitalPage({
                     <img
                         src={hospital.image}
                         alt={hospital.name}
-                        className="w-full h-[300px] object-cover"
+                        className="w-full h-[300px] object-center"
                     />
                 </div>
 

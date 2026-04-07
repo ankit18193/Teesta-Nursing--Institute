@@ -24,24 +24,38 @@ export default function HostelPage() {
     <LifeLayout title="Hostel Life">
       <div className="space-y-12">
 
-        {/* 🔥 INTRO */}
-        <section className="max-w-3xl">
-          <h2 className="text-xl font-semibold text-primary mb-3">
-            Comfortable & Secure Living
-          </h2>
 
-          <p className="text-gray-600 leading-relaxed">
+
+        {/* 🔥 HERO */}
+        <section className="relative rounded-3xl overflow-hidden">
+
+          <div className="absolute inset-0">
+            <img
+              src="/images/life/placement.jpg"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20"></div>
+          </div>
+
+          <div className="relative p-10 md:p-16 text-white max-w-3xl space-y-3">
+            <h1 className="text-3xl md:text-4xl font-bold">
+              Building Careers, Creating Futures
+            </h1>
+
+            <p className="text-sm md:text-base opacity-90">
             Our hostel facilities are designed to provide a safe, disciplined,
             and homely environment. We ensure that students feel comfortable
             while maintaining focus on their academic journey.
-          </p>
+            </p>
+          </div>
+
         </section>
 
         {/* 🔥 IMAGE SECTION */}
         <section className="grid md:grid-cols-2 gap-6">
           <div className="rounded-2xl overflow-hidden shadow-sm">
             <img
-              src="/images/hostel.jpg"
+              src="/images/life/hostel.png"
               alt="Hostel"
               className="w-full h-[250px] object-cover hover:scale-105 transition duration-500"
             />
@@ -49,7 +63,7 @@ export default function HostelPage() {
 
           <div className="rounded-2xl overflow-hidden shadow-sm">
             <img
-              src="/images/hostel-room.jpg"
+              src="/images/life/hostel2.png"
               alt="Hostel Room"
               className="w-full h-[250px] object-cover hover:scale-105 transition duration-500"
             />

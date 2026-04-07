@@ -17,7 +17,7 @@ export default function AdminLayout({
   }
 
   return (
-    <AdminProtected>
+    // <AdminProtected>
     <div className="flex min-h-screen bg-gray-100">
       <AdminSidebar />
       <div className="flex-1 flex flex-col">
@@ -25,6 +25,6 @@ export default function AdminLayout({
         <main className="p-6">{children}</main>
       </div>
     </div>
-    </AdminProtected>
+    // </AdminProtected>
   );
 }

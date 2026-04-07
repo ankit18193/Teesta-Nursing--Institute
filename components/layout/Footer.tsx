@@ -43,7 +43,7 @@ export default function Footer() {
                             {/* LOGO */}
 
                             <Image
-                                src="/images/logos/teesta-logo1.png"
+                                src="/images/logos/Teesta.png"
                                 alt="Teesta Nursing Institute"
                                 width={210}
                                 height={210}

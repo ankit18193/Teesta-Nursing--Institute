@@ -5,24 +5,29 @@ import { usePathname } from "next/navigation";
 
 // ✅ FIX 1: synced with actual hospital data
 const hospitals = [
-    { id: "astha", name: "Astha Hospital" },
-  
-    { id: "hope", name: "Hope & Hill Cancer Hospital" },
-  
-    { id: "kurseong-subdivisional", name: "Kurseong Sub-Divisional Hospital" },
-  
-    { id: "malbazar", name: "Malbazar Super Hospital" },
-  
-    { id: "malbazar-general", name: "Malbazar Hospital" },
-  
-    { id: "mitra", name: "Mitra Hospital" },
-  
-    { id: "siliguri-subdivisional", name: "Siliguri Sub-Divisional Hospital" },
-  
-    { id: "sun", name: "Sun Hospital & Diagnostic Center" },
-  
-    { id: "tufanganj", name: "Tufanganj Hospital" },
-  ];
+  {
+    id: "astha",
+    name: "Astha Hospital",
+    // image:"images/hospitals/astha.png"
+
+  },
+
+  { id: "hope", name: "Hope & Hill Cancer Hospital" },
+
+  { id: "kurseong-subdivisional", name: "Kurseong Sub-Divisional Hospital" },
+
+  { id: "malbazar", name: "Malbazar Super Hospital" },
+
+  { id: "malbazar-general", name: "Malbazar Hospital" },
+
+  { id: "mitra", name: "Mitra Hospital" },
+
+  { id: "siliguri-subdivisional", name: "Siliguri Sub-Divisional Hospital" },
+
+  { id: "sun", name: "Sun Hospital & Diagnostic Center" },
+
+  { id: "tufanganj", name: "Tufanganj Hospital" },
+];
 
 export default function HospitalLayout({
   children,
@@ -75,11 +80,10 @@ export default function HospitalLayout({
                   <Link
                     key={h.id}
                     href={`/hospitals/${h.id}`}
-                    className={`px-4 py-2 rounded-md text-sm transition ${
-                      isActive
+                    className={`px-4 py-2 rounded-md text-sm transition ${isActive
                         ? "bg-white text-primary font-medium"
                         : "hover:bg-white/10"
-                    }`}
+                      }`}
                   >
                     {h.name}
                   </Link>
