@@ -15,7 +15,7 @@ Students are guided through fundamental and advanced nursing subjects with conti
 The institute maintains a disciplined academic environment where students are encouraged to develop responsibility, communication skills, and professional ethics. Regular interaction with faculty members helps students clarify concepts and build confidence in their abilities.
 
 With its focus on consistency and practical readiness, TEESTA Nursing Institute aims to prepare students for real healthcare environments where both technical knowledge and patient interaction are equally important.`,
-    image: "/images/about/institute1.jpg",
+    image: "/images/about/TNI.png",
   },
 
   {
@@ -29,7 +29,7 @@ Training includes classroom learning combined with supervised practical exposure
 The learning environment encourages consistency, attention to detail, and professional conduct. Faculty members support students through regular academic guidance and practical demonstrations.
 
 The institute aims to develop nursing professionals who are capable of working in healthcare environments with a clear understanding of their roles and responsibilities.`,
-    image: "/images/about/institute2.jpg",
+    image: "/images/about/NNI.png",
   },
 
   {
@@ -43,7 +43,7 @@ Students are trained in patient care practices, hospital procedures, and basic c
 The institute promotes discipline, teamwork, and responsibility among students. Faculty guidance ensures that students receive consistent academic and practical support throughout their course.
 
 By focusing on both knowledge and application, Hillside School of Nursing prepares students to work effectively in healthcare institutions.`,
-    image: "/images/about/institute3.jpg",
+    image: "/images/about/HSN.png",
   },
 
   {
@@ -57,7 +57,7 @@ Students are introduced to subjects such as pharmacology, pharmaceutics, and pha
 The college encourages systematic learning, accuracy in laboratory work, and attention to detail. Faculty members guide students through academic coursework and practical exercises to ensure clarity of concepts.
 
 The aim of the institution is to prepare students for careers in the pharmaceutical field by providing them with the necessary academic foundation and practical experience.`,
-    image: "/images/about/institute4.jpg",
+    image: "/images/about/VCP.png",
   },
 ];
 
@@ -67,58 +67,110 @@ export default function InstitutesSection() {
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
 
+          {/* 🔥 HERO SECTION */}
+          {/* 🔥 HERO SECTION (POLISHED ONLY) */}
+          <section className="relative h-[320px] md:h-[300px] rounded-3xl overflow-hidden flex items-center">
+
+            <div className="absolute inset-0">
+              <img
+                src="/images/life/placement.png"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"></div>
+            </div>
+
+            <div className="relative z-10 p-6 md:p-16 max-w-3xl text-white space-y-4">
+              <h1 className="text-3xl md:text-4xl font-bold leading-tight">
+                Experience Life Beyond Classrooms
+              </h1>
+
+              <p className="text-sm md:text-base opacity-90 leading-relaxed">
+                A vibrant campus designed to inspire learning, creativity,
+                and personal growth in every student.
+              </p>
+            </div>
+
+          </section>
+
           {/* HEADER */}
-          <motion.div
+           {/* 🔥 HEADER (UI POLISHED — CONTENT SAME) */}
+           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16 max-w-3xl"
+            className="mt-20 mb-20 grid md:grid-cols-2 gap-10 items-start"
           >
-            <h2 className="text-3xl font-bold text-primary mb-4">
-              TEESTA GROUP OF INSTITUTION
-            </h2>
 
-            <p className="text-gray-600 text-[15px] leading-relaxed">
-  <span className="font-semibold text-gray-800">
-    Teesta Group of Institutions
-  </span>{" "}
-  offers education in{" "}
-  <span className="font-medium text-primary">
-    nursing and pharmaceutical sciences
-  </span>
-  , focusing on building a strong academic foundation along with practical
-  understanding of healthcare systems.
+            {/* LEFT SIDE */}
+            <div className="space-y-4">
 
-  <br /><br />
+              <h2 className="text-3xl font-bold text-primary">
+                TEESTA GROUP OF INSTITUTION
+              </h2>
 
-  The institutions emphasize{" "}
-  <span className="font-medium">academic learning</span>,{" "}
-  <span className="font-medium">clinical exposure</span>, and{" "}
-  <span className="font-medium">practical skill development</span> to ensure that
-  students are prepared for real-world responsibilities in hospitals,
-  laboratories, and healthcare environments.
+              <p className="text-gray-600 text-[15px] leading-relaxed">
+                <span className="font-semibold text-gray-800">
+                  Teesta Group of Institutions
+                </span>{" "}
+                offers education in{" "}
+                <span className="font-medium text-primary">
+                  nursing and pharmaceutical sciences
+                </span>
+                , focusing on building a strong academic foundation along with practical
+                understanding of healthcare systems.
+              </p>
 
-  <br /><br />
+              {/* 🔥 HIGHLIGHT TAGS */}
+              <div className="flex flex-wrap gap-3 pt-2">
+                {[
+                  "Academic Learning",
+                  "Clinical Exposure",
+                  "Practical Skills",
+                  "Healthcare Training",
+                ].map((item, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 text-xs bg-primary/10 text-primary rounded-full"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
 
-  Through a structured approach to teaching, students are guided in understanding
-  both theoretical concepts and their application in patient care, drug handling,
-  and clinical procedures. The learning process is supported by{" "}
-  <span className="font-medium">
-    experienced faculty guidance
-  </span>{" "}
-  and regular practical sessions.
+            </div>
 
-  <br /><br />
+            {/* RIGHT SIDE (REST CONTENT — SAME TEXT) */}
+            <div className="bg-gray-50 border rounded-2xl p-6 text-sm text-gray-600 leading-relaxed space-y-4 shadow-sm">
 
-  The group aims to develop professionals who are capable of working in healthcare
-  settings with{" "}
-  <span className="font-medium">
-    discipline, responsibility, and clarity of knowledge
-  </span>
-  , contributing effectively to the healthcare system.
-</p>
+              <p>
+                The institutions emphasize <span className="font-medium">academic learning</span>,{" "}
+                <span className="font-medium">clinical exposure</span>, and{" "}
+                <span className="font-medium">practical skill development</span> to ensure that
+                students are prepared for real-world responsibilities in hospitals,
+                laboratories, and healthcare environments.
+              </p>
+
+              <p>
+                Through a structured approach to teaching, students are guided in understanding
+                both theoretical concepts and their application in patient care, drug handling,
+                and clinical procedures. The learning process is supported by{" "}
+                <span className="font-medium">experienced faculty guidance</span> and regular practical sessions.
+              </p>
+
+              <p>
+                The group aims to develop professionals who are capable of working in healthcare
+                settings with{" "}
+                <span className="font-medium">
+                  discipline, responsibility, and clarity of knowledge
+                </span>
+                , contributing effectively to the healthcare system.
+              </p>
+
+            </div>
+
           </motion.div>
+
 
           {/* INSTITUTES */}
           <div className="space-y-24">
@@ -132,9 +184,8 @@ export default function InstitutesSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, delay: index * 0.1 }}
-                  className={`grid md:grid-cols-2 gap-16 items-center ${
-                    reverse ? "bg-gray-50 p-8 rounded-2xl" : ""
-                  }`}
+                  className={`grid md:grid-cols-2 gap-16 items-center ${reverse ? "bg-gray-50 p-8 rounded-2xl" : ""
+                    }`}
                 >
                   {/* IMAGE */}
                   <motion.div
@@ -182,137 +233,140 @@ export default function InstitutesSection() {
 
         </div>
       </section>
-{/* 🔷 COURSES OVERVIEW */}
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
-  className="mt-24 space-y-6"
->
-  <h2 className="text-2xl font-semibold text-primary">
-    Courses Offered
-  </h2>
-
-  <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
-    {[
-      {
-        name: "GNM",
-        duration: "3 Years",
-        desc: "Focused on foundational nursing education and patient care practices.",
-      },
-      {
-        name: "B.Sc Nursing",
-        duration: "4 Years",
-        desc: "Comprehensive nursing program with clinical exposure and advanced subjects.",
-      },
-      {
-        name: "D Pharma",
-        duration: "2 Years",
-        desc: "Basic pharmaceutical education covering drug formulation and dispensing.",
-      },
-      {
-        name: "B Pharma",
-        duration: "4 Years",
-        desc: "Detailed study of pharmaceutical sciences with lab-based learning.",
-      },
-    ].map((course, i) => (
-      <div
-        key={i}
-        className="bg-white border rounded-xl p-5 shadow-sm hover:shadow-md transition"
+      {/* 🔷 COURSES OVERVIEW */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-24 space-y-6"
       >
-        <h3 className="font-semibold text-primary mb-2">
-          {course.name}
-        </h3>
-        <p className="text-sm text-gray-600 mb-1">
-          Duration: {course.duration}
-        </p>
-        <p className="text-sm text-gray-500">
-          {course.desc}
-        </p>
-      </div>
-    ))}
-  </div>
-</motion.div>
+        <h2 className="text-2xl font-semibold text-primary">
+          Courses Offered
+        </h2>
 
-{/* 🔷 TRAINING SECTION */}
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
-  className="mt-20 space-y-4"
->
-  <h2 className="text-2xl font-semibold text-primary">
-    Clinical Training & Practical Exposure
-  </h2>
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
+          {[
+            {
+              name: "GNM",
+              duration: "3 Years",
+              desc: "Focused on foundational nursing education and patient care practices.",
+            },
+            {
+              name: "B.Sc Nursing",
+              duration: "4 Years",
+              desc: "Comprehensive nursing program with clinical exposure and advanced subjects.",
+            },
+            {
+              name: "D Pharma",
+              duration: "2 Years",
+              desc: "Basic pharmaceutical education covering drug formulation and dispensing.",
+            },
+            {
+              name: "B Pharma",
+              duration: "4 Years",
+              desc: "Detailed study of pharmaceutical sciences with lab-based learning.",
+            },
+          ].map((course, i) => (
+            <div
+              key={i}
+              className="bg-white border rounded-xl p-5 shadow-sm hover:shadow-md transition"
+            >
+              <h3 className="font-semibold text-primary mb-2">
+                {course.name}
+              </h3>
+              <p className="text-sm text-gray-600 mb-1">
+                Duration: {course.duration}
+              </p>
+              <p className="text-sm text-gray-500">
+                {course.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </motion.div>
 
-  <p className="text-gray-600 text-[15px] leading-relaxed max-w-4xl">
-    The institutions emphasize practical learning through clinical exposure and laboratory sessions.
-    Students are introduced to real healthcare environments where they observe patient care,
-    assist in procedures, and understand hospital workflows under supervision.
-  </p>
-
-  <p className="text-gray-600 text-[15px] leading-relaxed max-w-4xl">
-    Training is structured to gradually build confidence, starting from basic observation to
-    active participation. Laboratory sessions complement this by providing controlled environments
-    for skill development.
-  </p>
-</motion.div>
-
-{/* 🔷 FACILITIES */}
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
-  className="mt-20 space-y-6"
->
-  <h2 className="text-2xl font-semibold text-primary">
-    Infrastructure & Facilities
-  </h2>
-
-  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
-    {[
-      "Well-equipped Classrooms",
-      "Nursing & Pharmacy Laboratories",
-      "Library & Study Resources",
-      "Hostel Facilities",
-      "Transportation",
-      "Clinical Training Support",
-    ].map((item, i) => (
-      <div
-        key={i}
-        className="bg-gray-50 border rounded-xl p-4 text-sm font-medium text-gray-700 text-center"
+      {/* 🔷 TRAINING SECTION */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-20 space-y-4"
       >
-        {item}
-      </div>
-    ))}
-  </div>
-</motion.div>
+        <h2 className="text-2xl font-semibold text-primary">
+          Clinical Training & Practical Exposure
+        </h2>
 
-{/* 🔷 ADMISSION */}
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
-  className="mt-20 space-y-4"
->
-  <h2 className="text-2xl font-semibold text-primary">
-    Admission Information
-  </h2>
+        <p className="text-gray-600 text-[15px] leading-relaxed max-w-4xl">
+          The institutions emphasize practical learning through clinical exposure and laboratory sessions.
+          Students are introduced to real healthcare environments where they observe patient care,
+          assist in procedures, and understand hospital workflows under supervision.
+        </p>
 
-  <p className="text-gray-600 text-[15px] leading-relaxed max-w-4xl">
-    Admissions are conducted based on eligibility criteria for each program. Applicants must have
-    completed their qualifying education and submit required documents during the admission process.
-  </p>
+        <p className="text-gray-600 text-[15px] leading-relaxed max-w-4xl">
+          Training is structured to gradually build confidence, starting from basic observation to
+          active participation. Laboratory sessions complement this by providing controlled environments
+          for skill development.
+        </p>
+      </motion.div>
 
-  <p className="text-gray-600 text-[15px] leading-relaxed max-w-4xl">
-    For detailed admission procedures, fee structure, and seat availability, candidates are advised
-    to contact the institution directly or visit the admission office.
-  </p>
-</motion.div>
+      {/* 🔷 FACILITIES */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-20 space-y-6"
+      >
+        <h2 className="text-2xl font-semibold text-primary">
+          Infrastructure & Facilities
+        </h2>
+
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+          {[
+            "Well-equipped Classrooms",
+            "Nursing & Pharmacy Laboratories",
+            "Library & Study Resources",
+            "Hostel Facilities",
+            "Transportation",
+            "Clinical Training Support",
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="bg-gray-50 border rounded-xl p-4 text-sm font-medium text-gray-700 text-center"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* 🔷 ADMISSION */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-20 space-y-4"
+      >
+        <h2 className="text-2xl font-semibold text-primary">
+          Admission Information
+        </h2>
+
+        <p className="text-gray-600 text-[15px] leading-relaxed max-w-4xl">
+          Admissions are conducted based on eligibility criteria for each program. Applicants must have
+          completed their qualifying education and submit required documents during the admission process.
+        </p>
+
+        <p className="text-gray-600 text-[15px] leading-relaxed max-w-4xl">
+          For detailed admission procedures, fee structure, and seat availability, candidates are advised
+          to contact the institution directly or visit the admission office.
+        </p>
+      </motion.div>
+
+
+      
 
 
     </AboutLayout>

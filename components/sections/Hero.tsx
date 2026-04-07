@@ -9,12 +9,21 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const slides = [
+    
+    
     {
         img: "/images/hero/hero1.jpg",
         align: "center",
         title: "Excellence in",
         highlight: "Nursing Education",
         desc: "Empowering future healthcare professionals with advanced training and real clinical exposure.",
+    },
+    {
+        img: "/images/hero/hero0.jpg",
+        align: "right",
+        title: "Committed to",
+        highlight: "Quality Healthcare Training",
+        desc: "Building skilled professionals through innovation, discipline, and practical excellence.",
     },
     {
         img: "/images/hero/hero2.jpg",

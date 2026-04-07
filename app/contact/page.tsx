@@ -1,95 +1,138 @@
-import ContactLayout from "@/components/contact/ContactLayout";
+"use client";
 
+import ContactLayout from "@/components/contact/ContactLayout";
 
 export default function ContactPage() {
   return (
     <ContactLayout>
-      <div className="space-y-12">
 
-        {/* 🔷 HEADER */}
-        <div className="text-center space-y-2">
-          <h1 className="text-3xl md:text-4xl font-bold text-primary">
-            Contact Us
-          </h1>
-          <p className="text-gray-500 text-sm">
-            We’re here to help you with admissions, queries, and support
-          </p>
-        </div>
+      <div className="space-y-16">
 
-        {/* 🔷 FORM + INFO */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* 🔥 HERO */}
+        <section className="relative rounded-3xl overflow-hidden">
+
+          <div className="absolute inset-0">
+            <img
+              src="/images/life/outh.jpg"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20"></div>
+          </div>
+
+          <div className="relative p-10 md:p-16 text-white max-w-3xl space-y-3">
+            <h1 className="text-3xl md:text-4xl font-bold">
+              Get in Touch With Us
+            </h1>
+
+            <p className="text-sm md:text-base opacity-90">
+              We’re here to assist you with admissions, queries, and support.
+            </p>
+          </div>
+
+        </section>
+
+        {/* 🔥 MAIN SECTION */}
+        <section className="grid lg:grid-cols-2 gap-10">
 
           {/* 📝 FORM */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 space-y-4">
+          <div className="bg-white rounded-3xl shadow-md border p-6 md:p-8 space-y-5">
 
-            <input
-              type="text"
-              placeholder="Full Name"
-              className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary outline-none"
-            />
+            <h2 className="text-xl font-semibold text-gray-800">
+              Send a Message
+            </h2>
 
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary outline-none"
-            />
+            <div className="grid gap-4">
 
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary outline-none"
-            />
+              <input
+                type="text"
+                placeholder="Full Name"
+                className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none"
+              />
 
-            <textarea
-              placeholder="Your Message"
-              rows={4}
-              className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary outline-none"
-            ></textarea>
+              <input
+                type="email"
+                placeholder="Email Address"
+                className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none"
+              />
 
-            <button className="w-full bg-primary text-white py-3 rounded-lg font-semibold 
-                               hover:bg-primary/90 transition-all duration-300 shadow-md">
-              Send Message
-            </button>
-          </div>
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none"
+              />
 
-          {/* 📍 INFO */}
-          <div className="bg-gradient-to-br from-primary/10 to-white rounded-2xl p-6 border border-primary/20 shadow-md space-y-5">
+              <textarea
+                placeholder="Your Message"
+                rows={4}
+                className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none"
+              ></textarea>
 
-            <div>
-              <h3 className="text-lg font-semibold text-primary">Address</h3>
-              <p className="text-gray-600 text-sm mt-1">
-                Sevoke Road, Siliguri, West Bengal 734001
-              </p>
+              <button className="bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition shadow">
+                Send Message
+              </button>
+
             </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-primary">Phone</h3>
-              <p className="text-gray-600 text-sm mt-1">
-                +91 9876543210
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-primary">Email</h3>
-              <p className="text-gray-600 text-sm mt-1">
-                info@teesta.edu.in
-              </p>
-            </div>
-
-            <a
-              href="tel:+919876543210"
-              className="inline-block mt-3 px-5 py-2 bg-primary text-white rounded-lg 
-                         shadow hover:bg-primary/90 transition"
-            >
-              📞 Call Now
-            </a>
 
           </div>
 
-        </div>
+          {/* 📍 INFO PANEL */}
+          <div className="space-y-6">
 
-        {/* 🗺️ MAP */}
-        <div className="relative rounded-2xl overflow-hidden h-[300px] shadow-lg">
+            <div className="bg-gradient-to-br from-primary/10 to-white rounded-2xl p-6 border border-primary/20 shadow-md space-y-5">
+
+              <h2 className="text-lg font-semibold text-gray-800">
+                Contact Information
+              </h2>
+
+              {/* ADDRESS */}
+              <div className="flex items-start gap-3">
+                <span className="text-primary text-lg">📍</span>
+                <div>
+                  <p className="text-sm font-medium text-gray-700">Address</p>
+                  <p className="text-sm text-gray-600">
+                    Sevoke Road, Siliguri, West Bengal 734001
+                  </p>
+                </div>
+              </div>
+
+              {/* PHONE */}
+              <div className="flex items-start gap-3">
+                <span className="text-primary text-lg">📞</span>
+                <div>
+                  <p className="text-sm font-medium text-gray-700">Phone</p>
+                  <p className="text-sm text-gray-600">
+                    +91 9876543210
+                  </p>
+                </div>
+              </div>
+
+              {/* EMAIL */}
+              <div className="flex items-start gap-3">
+                <span className="text-primary text-lg">✉️</span>
+                <div>
+                  <p className="text-sm font-medium text-gray-700">Email</p>
+                  <p className="text-sm text-gray-600">
+                    info@teesta.edu.in
+                  </p>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <a
+                href="tel:+919876543210"
+                className="inline-block mt-3 px-5 py-2 bg-primary text-white rounded-lg shadow hover:bg-primary/90 transition"
+              >
+                Call Now
+              </a>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* 🔥 MAP */}
+        <section className="relative rounded-3xl overflow-hidden h-[350px] shadow-lg">
 
           <iframe
             src={`https://maps.google.com/maps?q=${encodeURIComponent(
@@ -99,17 +142,19 @@ export default function ContactPage() {
             loading="lazy"
           ></iframe>
 
-          
+          {/* 🔥 Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
 
-          <div className="relative h-full flex items-end p-4">
+          <div className="relative h-full flex items-end p-6">
             <p className="text-white text-sm font-medium">
-              📍 Visit us at our campus location
+              📍 Visit our campus in Siliguri
             </p>
           </div>
 
-        </div>
+        </section>
 
       </div>
+
     </ContactLayout>
   );
 }

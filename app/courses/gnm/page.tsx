@@ -1,17 +1,45 @@
+"use client";
+
 import CoursesLayout from "@/components/courses/CoursesLayout";
 
 export default function GNMPage() {
   return (
     <CoursesLayout title="GNM Nursing">
 
-      <div className="space-y-14">
+      <div className="space-y-16">
 
-        {/* 🔥 HERO SECTION */}
-        <div className="grid md:grid-cols-2 gap-10 items-center">
+        {/* 🔥 HERO (ADDED) */}
+        <section className="relative h-[300px] md:h-[380px] rounded-3xl overflow-hidden flex items-center">
 
-          <div className="overflow-hidden rounded-2xl shadow-md">
+          <div className="absolute inset-0">
             <img
               src="/images/courses/gnm.jpg"
+              alt="GNM Nursing"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"></div>
+          </div>
+
+          <div className="relative z-10 p-6 md:p-16 max-w-3xl text-white space-y-3">
+            <h1 className="text-3xl md:text-4xl font-bold">
+              General Nursing & Midwifery (GNM)
+            </h1>
+
+            <p className="text-sm md:text-base opacity-90">
+              Preparing compassionate nursing professionals with strong clinical skills,
+              real-world exposure, and patient care expertise.
+            </p>
+          </div>
+
+        </section>
+
+
+        {/* 🔥 EXISTING HERO CONTENT (UNCHANGED) */}
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+
+          <div className="overflow-hidden rounded-2xl shadow-lg">
+            <img
+              src="/images/courses/GNM2.png"
               alt="GNM Nursing"
               className="w-full h-[320px] object-cover hover:scale-105 transition duration-500"
             />
@@ -36,10 +64,11 @@ export default function GNMPage() {
 
         </div>
 
-        {/* 🔥 HIGHLIGHTS */}
+
+        {/* 🔥 HIGHLIGHTS (UPGRADED) */}
         <div className="grid md:grid-cols-3 gap-6">
 
-          <div className="bg-white border rounded-xl p-6 shadow-sm hover:shadow-md transition">
+          <div className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <h3 className="text-lg font-semibold text-primary mb-2">
               Practical Training
             </h3>
@@ -48,7 +77,7 @@ export default function GNMPage() {
             </p>
           </div>
 
-          <div className="bg-white border rounded-xl p-6 shadow-sm hover:shadow-md transition">
+          <div className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <h3 className="text-lg font-semibold text-primary mb-2">
               Expert Faculty
             </h3>
@@ -57,7 +86,7 @@ export default function GNMPage() {
             </p>
           </div>
 
-          <div className="bg-white border rounded-xl p-6 shadow-sm hover:shadow-md transition">
+          <div className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
             <h3 className="text-lg font-semibold text-primary mb-2">
               Career Ready
             </h3>
@@ -68,8 +97,9 @@ export default function GNMPage() {
 
         </div>
 
+
         {/* 🔥 INSTITUTION ADVANTAGE */}
-        <div className="bg-primary/5 border border-primary/10 rounded-xl p-6">
+        <div className="bg-gradient-to-br from-primary/10 to-white border border-primary/20 rounded-2xl p-6 shadow-sm">
           <h3 className="text-lg font-semibold text-primary mb-3">
             Our Institutional Advantage
           </h3>
@@ -82,69 +112,32 @@ export default function GNMPage() {
           </p>
         </div>
 
-        {/* 🔥 ELIGIBILITY SECTION (UPGRADED) */}
-        <div className="border rounded-xl p-6 shadow-sm">
+
+        {/* 🔥 ELIGIBILITY */}
+        <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition">
           <h3 className="text-lg font-semibold text-primary mb-4">
             Eligibility Criteria
           </h3>
 
           <ul className="text-gray-600 text-sm space-y-2 list-disc pl-4">
-            <li>
-              10+2 with English securing minimum 40% marks from a recognized board
-            </li>
-            <li>
-              Candidates from State Open School and NIOS are eligible
-            </li>
-            <li>
-              10+2 with 40% marks in Vocational ANM course (INC recognized)
-            </li>
-            <li>
-              10+2 with 40% marks in Vocational Healthcare Science (CBSE recognized)
-            </li>
-            <li>
-              Registered ANM candidates are eligible
-            </li>
-            <li className="font-medium text-primary/80">
-              Science (Biology) background is preferred
-            </li>
+            <li>10+2 with English securing minimum 40% marks from a recognized board</li>
+            <li>Candidates from State Open School and NIOS are eligible</li>
+            <li>10+2 with 40% marks in Vocational ANM course (INC recognized)</li>
+            <li>10+2 with 40% marks in Vocational Healthcare Science (CBSE recognized)</li>
+            <li>Registered ANM candidates are eligible</li>
+            <li className="font-medium text-primary/80">Science (Biology) background is preferred</li>
           </ul>
 
-          {/* FOREIGN STUDENTS */}
           <p className="text-gray-600 text-sm mt-4">
             <span className="font-semibold text-primary">For Foreign Nationals:</span>{" "}
             Eligibility equivalency must be certified by the Association of Indian
-            Universities (AIU), New Delhi. Institutions and State Nursing Councils
-            will ensure compliance with prescribed standards.
+            Universities (AIU), New Delhi.
           </p>
         </div>
 
-        {/* 🔥 RESERVATION
-        <div className="border rounded-xl p-6 shadow-sm">
-          <h3 className="text-lg font-semibold text-primary mb-4">
-            Reservation Policy
-          </h3>
 
-          <ul className="text-gray-600 text-sm space-y-2 list-disc pl-4">
-            <li>
-              3% reservation for candidates with locomotor disability (40%–50%)
-            </li>
-            <li>
-              Disability eligibility assessed by medical board + nursing expert panel
-            </li>
-            <li>
-              5% relaxation in marks for SC/ST candidates
-            </li>
-            <li>
-              Additional reservations as per State Government policy
-            </li>
-            <li className="italic">
-              Reservations are included within sanctioned seats (not additional)
-            </li>
-          </ul>
-        </div> */}
-
-        {/* 🔥 ADMISSION RULES */}
-        <div className="border rounded-xl p-6 shadow-sm">
+        {/* 🔥 ADMISSION */}
+        <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition">
           <h3 className="text-lg font-semibold text-primary mb-4">
             Admission Guidelines
           </h3>
@@ -158,10 +151,11 @@ export default function GNMPage() {
           </ul>
         </div>
 
+
         {/* 🔥 COURSE DETAILS */}
         <div className="grid md:grid-cols-2 gap-8">
 
-          <div className="border rounded-xl p-6 shadow-sm">
+          <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition">
             <h3 className="text-lg font-semibold text-primary mb-2">
               Duration
             </h3>
@@ -170,7 +164,7 @@ export default function GNMPage() {
             </p>
           </div>
 
-          <div className="border rounded-xl p-6 shadow-sm">
+          <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition">
             <h3 className="text-lg font-semibold text-primary mb-2">
               Career Opportunities
             </h3>
@@ -180,14 +174,13 @@ export default function GNMPage() {
             </p>
           </div>
 
-          <div className="border rounded-xl p-6 shadow-sm md:col-span-2">
+          <div className="border rounded-2xl p-6 shadow-sm md:col-span-2 hover:shadow-md transition">
             <h3 className="text-lg font-semibold text-primary mb-2">
               Training & Clinical Exposure
             </h3>
             <p className="text-gray-600 text-sm">
               Students undergo intensive clinical training through Teesta Group’s
-              hospitals and healthcare institutions, ensuring real-world experience
-              in patient care, emergency handling, and clinical procedures.
+              hospitals and healthcare institutions.
             </p>
           </div>
 

@@ -13,47 +13,47 @@ const hospitals = [
   {
     name: "Mitra Hospital",
     location: "Siliguri, West Bengal",
-    image: "/images/hospitals/h1.jpg",
+    image: "/images/hospitals/mitra.png",
   },
   {
     name: "Malbazar Super Hospital",
     location: "Siliguri, West Bengal",
-    image: "/images/hospitals/h2.jpg",
+    image: "/images/hospitals/msh.jpg",
   },
   {
     name: "Sun Hospital & Diagnostic Center",
     location: "Siliguri, West Bengal",
-    image: "/images/hospitals/h3.jpg",
+    image: "/images/hospitals/sun.png",
   },
   {
     name: "Hope & Hill Cancer Hospital",
     location: "Darjeeling",
-    image: "/images/hospitals/h4.jpg",
+    image: "/images/hospitals/hh.jpg",
   },
   {
     name: "Siliguri Sub-Divisional Hospital",
     location: "Siliguri",
-    image: "/images/hospitals/h5.jpg",
+    image: "/images/hospitals/ssd.jpg",
   },
   {
     name: "Kurseong Sub-Divisional Hospital",
     location: "Darjeeling",
-    image: "/images/hospitals/h6.jpg", // ✅ fixed
+    image: "/images/hospitals/ksdh.jpg", // ✅ fixed
   },
   {
     name: "Astha Hospital",
     location: "Siliguri",
-    image: "/images/hospitals/h7.jpg",
+    image: "/images/hospitals/astha.png",
   },
   {
     name: "Tufanganj Hospital",
     location: "Cooch Behar",
-    image: "/images/hospitals/h8.jpg",
+    image: "/images/hospitals/tufan.png",
   },
   {
     name: "Malbazar Hospital",
     location: "Jalpaiguri",
-    image: "/images/hospitals/h9.jpg",
+    image: "/images/hospitals/mh.jpg",
   },
 ];
 
