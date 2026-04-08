@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { useState } from "react";
-import axios from "axios";
+import api from "@/lib/api"
 
 export default function AdmissionQuery() {
 
@@ -58,12 +58,12 @@ export default function AdmissionQuery() {
     }
 
     try {
-      const response = await axios.post("/api/leads", {
-          name: formData.name.trim(),  
-          phone: formData.phone.trim(),
-          course: formData.course || null,
-          message: formData.message.trim() || null,
-      });
+const response = await api.post("/inquiry", {
+  name: formData.name.trim(),
+  phone: formData.phone.trim(),
+  course: formData.course || null,
+  message: formData.message.trim() || null,
+});
 
       const result = await response.data;
 

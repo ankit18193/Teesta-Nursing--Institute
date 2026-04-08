@@ -2,6 +2,8 @@ import { checkAuth } from "@/lib/auth";
 import { leadSchema } from "@/lib/lead_validation";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { LeadStatus } from "@prisma/client";
+
 
 // POST → Create Lead
 export async function POST(req: Request) {
@@ -20,7 +22,7 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-    const { name, phone,course, message } = parsed.data;
+    const { name, phone,course, message, status } = parsed.data;
 
     if (!name || !phone) {
       return NextResponse.json(
@@ -35,6 +37,7 @@ export async function POST(req: Request) {
         phone:phone.trim(),
         course:course?.trim() || null,
         message:message?.trim() || null,
+        status: status ?? LeadStatus.NEW,
       },
     });
 
@@ -87,14 +90,14 @@ export async function GET(req: Request) {
     const where: any = {};
 
     if (status) {
-      where.status = status;
+      where.status = status as LeadStatus;
     }
 
     if (search) {
       where.OR = [
         { name: { contains: search, mode: "insensitive" } },
         { phone: { contains: search } },
-        { email: { contains: search, mode: "insensitive" } },
+        { course: { contains: search, mode: "insensitive" } },
       ];
     }
 
