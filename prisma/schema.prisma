@@ -56,7 +56,18 @@ model Gallery {
   createdAt DateTime @default(now())
 }
 
+model Inquiry {
+  id        Int      @id @default(autoincrement())
+  name      String
+  phone     String
+  email     String?
+  message   String?
+  course    String?
+  createdAt DateTime @default(now())
+}
+
 enum LeadStatus {
   NEW
   CONTACTED
+  CONVERTED
 }

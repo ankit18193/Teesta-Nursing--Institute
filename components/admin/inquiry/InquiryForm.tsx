@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import api from "@/lib/api"
 
 type Inquiry = {
   id?: number;
@@ -30,18 +31,28 @@ export default function InquiryForm({ onClose, initialData }: Props) {
     }
   }, [initialData]);
 
-  const handleSubmit = () => {
-    if (!name || !phone) return;
+const handleSubmit = async () => {
+  if (!name || !phone) return;
 
-    console.log("Inquiry Submitted:", {
+  try {
+    const res = await api.post("/inquiry", {
       name,
       phone,
       email,
       message,
     });
 
+    if (!res.data.success) {
+      alert(res.data.message);
+      return;
+    }
+
+    alert("Inquiry added ✅");
     onClose();
-  };
+  } catch (err: any) {
+    alert(err.response?.data?.message || "Error");
+  }
+};
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">

@@ -6,6 +6,7 @@ import LeadsForm from "@/components/admin/leads/LeadsForm";
 
 export default function LeadsPage() {
   const [open, setOpen] = useState(false);
+  const [refresh, setRefresh] = useState(0); // ✅ trigger reload
 
   return (
     <div className="space-y-6">
@@ -14,18 +15,15 @@ export default function LeadsPage() {
         <h2 className="text-xl font-semibold text-gray-700">
           Leads
         </h2>
-
-        <button
-          onClick={() => setOpen(true)}
-          className="bg-primary text-white px-4 py-2 rounded-lg text-sm"
-        >
-          + Add Lead
-        </button>
       </div>
+      <LeadsTable refresh={refresh} />
 
-      <LeadsTable />
-
-      {open && <LeadsForm onClose={() => setOpen(false)} />}
+      {open && (
+        <LeadsForm
+          onClose={() => setOpen(false)}
+          onSuccess={() => setRefresh((prev) => prev + 1)} // ✅ trigger refresh
+        />
+      )}
 
     </div>
   );

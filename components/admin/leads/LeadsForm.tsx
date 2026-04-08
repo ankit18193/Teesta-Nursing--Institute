@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import api from "@/lib/api";
 
 type Lead = {
   id?: number;
@@ -13,13 +14,15 @@ type Lead = {
 type Props = {
   onClose: () => void;
   initialData?: Lead;
+  onSuccess?: () => void;
 };
 
-export default function LeadsForm({ onClose, initialData }: Props) {
+export default function LeadsForm({ onClose, initialData, onSuccess }: Props) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [course, setCourse] = useState("");
-  const [status, setStatus] = useState("new");
+  const [status, setStatus] = useState("NEW");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (initialData) {
@@ -30,17 +33,58 @@ export default function LeadsForm({ onClose, initialData }: Props) {
     }
   }, [initialData]);
 
-  const handleSubmit = () => {
-    if (!name || !phone) return;
+  const handleSubmit = async () => {
+    if (!name || !phone) {
+      alert("Name and Phone are required");
+      return;
+    }
 
-    console.log("Lead Submitted:", {
-      name,
-      phone,
-      course,
-      status,
-    });
+    try {
+      setLoading(true);
 
-    onClose();
+      // ✅ EDIT MODE
+      if (initialData?.id) {
+        const res = await api.patch(`/leads/${initialData.id}`, {
+          name,
+          phone,
+          course,
+          status,
+        });
+
+        if (!res.data.success) {
+          alert(res.data.message);
+          return;
+        }
+
+        alert("Lead updated ✅");
+      }
+
+      // ✅ CREATE MODE
+      else {
+        const res = await api.post("/leads", {
+          name,
+          phone,
+          course,
+          status,
+        });
+
+        if (!res.data.success) {
+          alert(res.data.message);
+          return;
+        }
+
+        alert("Lead created ✅");
+      }
+
+      onSuccess && onSuccess();
+      onClose();
+
+    } catch (err: any) {
+      console.error(err);
+      alert(err.response?.data?.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -88,9 +132,9 @@ export default function LeadsForm({ onClose, initialData }: Props) {
               onChange={(e) => setStatus(e.target.value)}
               className="w-full mt-1 px-3 py-2 border rounded-lg text-sm"
             >
-              <option value="new">New</option>
-              <option value="contacted">Contacted</option>
-              <option value="converted">Converted</option>
+              <option value="NEW">New</option>
+              <option value="CONTACTED">Contacted</option>
+              <option value="CONVERTED">Converted</option>
             </select>
           </div>
 
@@ -107,9 +151,14 @@ export default function LeadsForm({ onClose, initialData }: Props) {
 
           <button
             onClick={handleSubmit}
+            disabled={loading}
             className="px-4 py-2 bg-primary text-white rounded-lg text-sm"
           >
-            {initialData ? "Update" : "Save"}
+            {loading
+              ? "Saving..."
+              : initialData
+              ? "Update"
+              : "Save"}
           </button>
 
         </div>
