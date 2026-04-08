@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { motion } from "framer-motion";
 
@@ -33,7 +34,9 @@ export default function CTASection() {
           className="bg-white text-primary px-6 py-3 rounded-lg font-semibold
           hover:bg-gray-100 transition duration-300 shadow-md"
         >
+          <Link href="/contact">
           Contact Now
+          </Link>
         </motion.button>
 
       </div>
