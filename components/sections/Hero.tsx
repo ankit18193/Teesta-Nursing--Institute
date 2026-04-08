@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
@@ -20,7 +22,7 @@ const slides = [
     },
     {
         img: "/images/hero/hero0.jpg",
-        align: "right",
+        align: "left",
         title: "Committed to",
         highlight: "Quality Healthcare Training",
         desc: "Building skilled professionals through innovation, discipline, and practical excellence.",
@@ -135,9 +137,11 @@ export default function Hero() {
                                                     : ""
                                             }`}
                                     >
+                                        <Link href="/resources/application">
                                         <button className="bg-primary hover:bg-primary/90 px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition duration-200">
                                             Apply Now
                                         </button>
+                                        </Link>
 
                                         <button className="border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition duration-200">
                                             Explore Courses

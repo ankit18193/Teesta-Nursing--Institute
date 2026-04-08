@@ -90,7 +90,7 @@ export default function ContactPage() {
                 <div>
                   <p className="text-sm font-medium text-gray-700">Address</p>
                   <p className="text-sm text-gray-600">
-                    Sevoke Road, Siliguri, West Bengal 734001
+                  MFV3 + 5FP, Teesta Campus, VIP Road, South Shanti Nagar, Ananda Pally, Siliguri, West Bengal- 734006
                   </p>
                 </div>
               </div>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                 <div>
                   <p className="text-sm font-medium text-gray-700">Phone</p>
                   <p className="text-sm text-gray-600">
-                    +91 9876543210
+                    +91-9771406258 | +91-9733135555
                   </p>
                 </div>
               </div>

@@ -42,9 +42,9 @@ export default async function HospitalPage({
                 "Recognized for its dependable multi-speciality care, efficient emergency services, and accessible healthcare facilities for patients across Siliguri and nearby regions.",
 
             facilitiesImages: [
-                "/images/hospitals/f1.jpg",
-                "/images/hospitals/f2.jpg",
-                "/images/hospitals/f3.jpg",
+                "/images/hospitals/facilities/mf2.jpg",
+                "/images/hospitals/facilities/af3.jpg",
+                "/images/hospitals/facilities/mf1.jpg",
             ],
         },
 
@@ -75,9 +75,9 @@ export default async function HospitalPage({
                 "Known for providing essential healthcare services to rural and semi-urban populations, with a strong focus on accessibility, emergency care, and community-based treatment support.",
 
             facilitiesImages: [
-                "/images/hospitals/f1.jpg",
-                "/images/hospitals/f2.jpg",
-                "/images/hospitals/f3.jpg",
+                "/images/hospitals/facilities/mf1.jpg",
+                "/images/hospitals/facilities/ssf2.jpg",
+                "/images/hospitals/facilities/f2.jpg",
             ],
         },
 
@@ -107,9 +107,9 @@ export default async function HospitalPage({
                 "Recognized for its focus on accurate diagnostics, timely report delivery, and convenient access to essential testing services in Siliguri.",
 
             facilitiesImages: [
-                "/images/hospitals/f1.jpg",
-                "/images/hospitals/f2.jpg",
-                "/images/hospitals/f2.jpg",
+                "/images/hospitals/facilities/f2.jpg",
+                "/images/hospitals/facilities/opd.jpg",
+                "/images/hospitals/facilities/lr.jpg",
             ],
         },
 
@@ -139,10 +139,11 @@ export default async function HospitalPage({
                 "Focused on providing accessible oncology care in the Darjeeling hills, supporting cancer patients with diagnosis, treatment, and ongoing care closer to their homes.",
 
             facilitiesImages: [
-                "/images/hospitals/f1.jpg",
-                "/images/hospitals/f2.jpg",
-                "/images/hospitals/f2.jpg",
-            ],
+                "/images/hospitals/facilities/hf1.jpg",
+                "/images/hospitals/facilities/hf2.jpg",
+                "/images/hospitals/facilities/hf3.jpg",
+
+            ]
         },
 
         // ✅ NEW HOSPITALS ADDED BELOW (same structure)
@@ -173,9 +174,10 @@ export default async function HospitalPage({
                 "Recognized as a major government healthcare provider offering accessible and affordable medical services, with strong support for emergency care and maternal health in the Siliguri region.",
 
             facilitiesImages: [
-                "/images/hospitals/f1.jpg",
-                "/images/hospitals/f2.jpg",
-                "/images/hospitals/f2.jpg",
+                "/images/hospitals/facilities/ssf1.jpg",
+                "/images/hospitals/facilities/ssf2.jpg",
+                "/images/hospitals/facilities/ssf3.jpg",
+                
             ],
         },
 
@@ -206,9 +208,9 @@ export default async function HospitalPage({
                 "Plays a vital role in delivering consistent and accessible healthcare services in the hill regions, with strong support for emergency care and maternal health in Kurseong and surrounding areas.",
 
             facilitiesImages: [
-                "/images/hospitals/f1.jpg",
-                "/images/hospitals/f2.jpg",
-                "/images/hospitals/f2.jpg",
+               "/images/hospitals/facilities/af1.jpg",
+               "/images/hospitals/facilities/iopd2.jpg",
+               "/images/hospitals/facilities/ipd.jpg",
             ],
         },
 
@@ -238,10 +240,11 @@ export default async function HospitalPage({
                 "Known for providing patient-focused care with a balance of medical treatment, diagnostics, and surgical services in a private healthcare setting.",
 
             facilitiesImages: [
-                "/images/hospitals/f1.jpg",
-                "/images/hospitals/f2.jpg",
-                "/images/hospitals/f2.jpg",
-            ],
+                "/images/hospitals/facilities/af1.jpg",
+                "/images/hospitals/facilities/af2.jpg",
+                "/images/hospitals/facilities/af3.jpg",
+            ]
+                
         },
 
         tufanganj: {
@@ -270,8 +273,9 @@ export default async function HospitalPage({
                 "Provides essential and accessible healthcare services to rural communities, with a strong focus on primary care, emergency support, and maternal health.",
 
             facilitiesImages: [
-                "/images/hospitals/f1.jpg",
-                "/images/hospitals/f2.jpg",
+                "/images/hospitals/facilities/ipd.jpg",
+                "/images/hospitals/facilities/iopd2.jpg",
+                "/images/hospitals/facilities/f2.jpg",
             ],
         },
 
@@ -301,9 +305,10 @@ export default async function HospitalPage({
                 "Provides reliable primary healthcare and emergency support for the Malbazar region, serving as an essential medical facility for routine and urgent care needs.",
 
             facilitiesImages: [
-                "/images/hospitals/f1.jpg",
-                "/images/hospitals/f2.jpg",
-                "/images/hospitals/f2.jpg",
+                "/images/hospitals/facilities/f1.jpg",
+                "/images/hospitals/facilities/opd.jpg",
+                "/images/hospitals/facilities/lr.jpg",
+                
             ],
         },
     };
@@ -405,22 +410,22 @@ export default async function HospitalPage({
                             <div
                                 key={i}
                                 className="group relative overflow-hidden rounded-2xl 
-                 shadow-md hover:shadow-xl transition-all duration-300"
+                                          shadow-md hover:shadow-xl transition-all duration-300"
                             >
                                 {/* Image */}
                                 <img
                                     src={img}
                                     className="w-full h-[200px] object-cover 
-                   group-hover:scale-110 transition duration-500"
+                                              group-hover:scale-110 transition duration-500"
                                 />
 
                                 {/* Gradient Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-70"></div>
 
                                 {/* Label */}
-                                <div className="absolute bottom-3 left-3 text-white text-sm font-semibold tracking-wide">
+                                {/* <div className="absolute bottom-3 left-3 text-white text-sm font-semibold tracking-wide">
                                     Facility {i + 1}
-                                </div>
+                                </div> */}
 
                                 {/* Hover Highlight Border */}
                                 <div className="absolute inset-0 rounded-2xl ring-0 group-hover:ring-2 ring-primary/40 transition-all duration-300"></div>
@@ -444,7 +449,7 @@ export default async function HospitalPage({
                         referrerPolicy="no-referrer-when-downgrade"
                     ></iframe>
 
-                    
+
 
                     {/* 💎 CONTENT */}
                     <div className="relative h-full p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">

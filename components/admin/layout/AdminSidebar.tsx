@@ -9,15 +9,22 @@ import {
   Download,
   Image,
   Star,
+  Users,
+  MessageSquare,
+  Phone,
 } from "lucide-react";
 
 const navItems = [
   { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
+  { name: "Leads", href: "/admin/leads", icon: Users },
+  { name: "Inquiry", href: "/admin/inquiry", icon: MessageSquare },
   { name: "Notices", href: "/admin/notices", icon: Bell },
   { name: "News", href: "/admin/news", icon: Newspaper },
   { name: "Downloads", href: "/admin/downloads", icon: Download },
   { name: "Gallery", href: "/admin/gallery", icon: Image },
   { name: "Testimonials", href: "/admin/testimonials", icon: Star },
+  { name: "Contact Us", href: "/admin/contact", icon: Phone },
+  
 ];
 
 export default function AdminSidebar() {
@@ -29,7 +36,7 @@ export default function AdminSidebar() {
                       border-r border-gray-200
                       shadow-sm flex flex-col">
 
-      {/* 🔷 LOGO / TITLE */}
+      {/* 🔷 HEADER */}
       <div className="p-6 border-b border-gray-200">
         <h2 className="text-xl font-bold text-primary tracking-wide">
           Admin Panel
@@ -44,7 +51,9 @@ export default function AdminSidebar() {
 
         {navItems.map((item) => {
           const Icon = item.icon;
-          const isActive = pathname === item.href;
+
+          // ✅ Better active detection (fixes nested routes issue)
+          const isActive = pathname.startsWith(item.href);
 
           return (
             <Link
@@ -74,7 +83,7 @@ export default function AdminSidebar() {
               {/* Text */}
               <span>{item.name}</span>
 
-              {/* Active indicator */}
+              {/* Active dot */}
               {isActive && (
                 <div className="ml-auto w-2 h-2 rounded-full bg-primary" />
               )}
@@ -87,4 +96,3 @@ export default function AdminSidebar() {
     </aside>
   );
 }
-

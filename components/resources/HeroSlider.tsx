@@ -19,12 +19,12 @@ const slides = [
     subtitle: "Strong Career Opportunities",
   },
   {
-    image: "/images/about/about1.jpg",
+    image: "/images/hero/hero7.png",
     title: "Admissions Open 2026",
     subtitle: "Start Your Journey Today",
   },
   {
-    image: "/images/hero/hero7.png",
+    image: "/images/hero/hero8.png",
     title: "Expert Faculty",
     subtitle: "Learn from highly experienced healthcare professionals",
   },

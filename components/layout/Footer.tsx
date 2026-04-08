@@ -19,7 +19,7 @@ const quickLinks = [
     { name: "About Us", href: "/about/institutions" },
     { name: "Hospitals", href: "/hospitals" },
     { name: "Leadership", href: "/about/leadership" },
-    { name: "FAQ'S", href: "/resources/faq" }, // update if different route
+    { name: "FAQ'S", href: "/contact" }, // update if different route
 ];
 
 
@@ -70,13 +70,13 @@ export default function Footer() {
                         </div>
 
                         <p className="text-[13px] text-gray-400 mb-4 leading-relaxed pr-6">
-                            123/4, Teesta Campus, Siliguri, West Bengal-734001, India.
+                        MFV3 + 5FP, Teesta Campus,  VIP Road, South Shanti Nagar, Ananda Pally, Siliguri, West Bengal- 734006
                         </p>
 
                         <div className="space-y-2 text-[13px] mb-6">
                             <p className="flex items-center gap-2 hover:text-accent transition cursor-pointer">
                                 <Phone size={14} className="text-purple-500" />
-                                +91-080-95571188, +91-080-50046002
+                                +91-9771406258 | +91-9733135555
                             </p>
                             <p className="flex items-center gap-2 hover:text-accent transition cursor-pointer">
                                 <Mail size={14} className="text-purple-500" />
@@ -189,8 +189,8 @@ export default function Footer() {
                     <div className="md:col-span-2">
                         <h3 className="text-[14px] font-bold text-white mb-3">Call Us Now</h3>
                         <div className="space-y-1 text-[14px] font-medium text-yellow-400">
-                            <p>+91-080-95571188</p>
-                            <p>+91-080-50046002</p>
+                            <p>+91-9771406258</p>
+                            <p>+91-9733135555</p>
                         </div>
                     </div>
 
