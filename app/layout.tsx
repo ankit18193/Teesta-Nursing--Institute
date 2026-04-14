@@ -34,7 +34,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} ${inter.variable}`}>
+      <body className={`${montserrat.variable} ${inter.variable} w-full overflow-x-clip`}>
 
         {/* ❌ Hide TopBar + Navbar on admin login */}
         {!isAdminLogin && <TopBar />}
