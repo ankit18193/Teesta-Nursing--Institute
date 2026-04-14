@@ -64,12 +64,12 @@ The aim of the institution is to prepare students for careers in the pharmaceuti
 export default function InstitutesSection() {
   return (
     <AboutLayout title="Our Institutions">
-      <section className="py-24 px-6">
+      <section className="px-3 py-8 sm:px-5 sm:py-12 md:px-6 md:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto">
 
-          {/* 🔥 HERO SECTION */}
+          
           {/* 🔥 HERO SECTION (POLISHED ONLY) */}
-          <section className="relative h-[320px] md:h-[300px] rounded-3xl overflow-hidden flex items-center">
+          <section className="relative flex h-[220px] items-center overflow-hidden rounded-2xl sm:h-[270px] md:h-[300px] md:rounded-3xl">
 
             <div className="absolute inset-0">
               <img
@@ -79,12 +79,12 @@ export default function InstitutesSection() {
               <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"></div>
             </div>
 
-            <div className="relative z-10 p-6 md:p-16 max-w-3xl text-white space-y-4">
-              <h1 className="text-3xl md:text-4xl font-bold leading-tight">
+            <div className="relative z-10 max-w-3xl space-y-3 p-4 text-white sm:p-6 md:space-y-4 md:p-12 lg:p-16">
+              <h1 className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">
                 Experience Life Beyond Classrooms
               </h1>
 
-              <p className="text-sm md:text-base opacity-90 leading-relaxed">
+              <p className="text-xs leading-relaxed opacity-90 sm:text-sm md:text-base">
                 A vibrant campus designed to inspire learning, creativity,
                 and personal growth in every student.
               </p>
@@ -99,17 +99,17 @@ export default function InstitutesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-20 mb-20 grid md:grid-cols-2 gap-10 items-start"
+            className="mb-10 mt-8 grid items-start gap-6 sm:mb-14 sm:mt-10 sm:gap-8 md:mb-16 md:mt-12 md:grid-cols-2 md:gap-10"
           >
 
             {/* LEFT SIDE */}
             <div className="space-y-4">
 
-              <h2 className="text-3xl font-bold text-primary">
+              <h2 className="text-2xl font-bold text-primary sm:text-3xl">
                 TEESTA GROUP OF INSTITUTION
               </h2>
 
-              <p className="text-gray-600 text-[15px] leading-relaxed">
+              <p className="text-[13px] leading-relaxed text-gray-600 text-justify sm:text-[14px] md:text-[15px]">
                 <span className="font-semibold text-gray-800">
                   Teesta Group of Institutions
                 </span>{" "}
@@ -141,7 +141,7 @@ export default function InstitutesSection() {
             </div>
 
             {/* RIGHT SIDE (REST CONTENT — SAME TEXT) */}
-            <div className="bg-gray-50 border rounded-2xl p-6 text-sm text-gray-600 leading-relaxed space-y-4 shadow-sm">
+            <div className="space-y-4 rounded-2xl border bg-gray-50 p-4 text-xs leading-relaxed text-gray-600 shadow-sm text-justify sm:p-5 sm:text-sm md:p-6">
 
               <p>
                 The institutions emphasize <span className="font-medium">academic learning</span>,{" "}
@@ -173,7 +173,7 @@ export default function InstitutesSection() {
 
 
           {/* INSTITUTES */}
-          <div className="space-y-24">
+          <div className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
             {institutes.map((item, index) => {
               const reverse = index % 2 !== 0;
 
@@ -184,7 +184,7 @@ export default function InstitutesSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, delay: index * 0.1 }}
-                  className={`grid md:grid-cols-2 gap-16 items-center ${reverse ? "bg-gray-50 p-8 rounded-2xl" : ""
+                  className={`grid items-center gap-6 sm:gap-8 md:grid-cols-2 md:gap-12 lg:gap-16 ${reverse ? "rounded-2xl bg-gray-50 p-4 sm:p-6 md:p-8" : ""
                     }`}
                 >
                   {/* IMAGE */}
@@ -194,11 +194,11 @@ export default function InstitutesSection() {
                     transition={{ duration: 0.6 }}
                     className={`${reverse ? "md:order-2" : ""}`}
                   >
-                    <div className="overflow-hidden rounded-2xl shadow-md">
+                    <div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl shadow-md md:mx-0 md:max-w-none">
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-[560px] object-cover hover:scale-105 transition duration-500"
+                        className="h-[280px] w-full object-cover transition duration-500 hover:scale-105 sm:h-[340px] md:h-[420px] lg:h-[520px]"
                       />
                     </div>
                   </motion.div>
@@ -210,19 +210,19 @@ export default function InstitutesSection() {
                     transition={{ duration: 0.6 }}
                     className={`${reverse ? "md:order-1" : ""}`}
                   >
-                    <h3 className="text-2xl font-semibold text-primary mb-3">
+                    <h3 className="mb-3 text-xl font-semibold text-primary sm:text-2xl">
                       {item.title}
                     </h3>
 
-                    <p className="text-sm text-gray-500 mb-2">
+                    <p className="mb-2 text-xs text-gray-500 sm:text-sm">
                       📍 {item.location}
                     </p>
 
-                    <p className="text-sm text-gray-600 mb-4">
+                    <p className="mb-4 text-xs text-gray-600 sm:text-sm">
                       🎓 Courses: {item.courses.join(", ")}
                     </p>
 
-                    <p className="text-gray-600 text-[15px] leading-relaxed whitespace-pre-line">
+                    <p className="text-[13px] leading-relaxed text-gray-600 whitespace-pre-line text-justify sm:text-[14px] md:text-[15px]">
                       {item.desc}
                     </p>
                   </motion.div>

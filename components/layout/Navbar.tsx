@@ -1,17 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
-
-
+import { ChevronDown, Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
-
   {
     name: "About Us",
     href: "/about",
@@ -23,7 +18,6 @@ const navLinks = [
       { name: "Vision & Mission", href: "/about/vision" },
     ],
   },
-
   {
     name: "Programmes",
     href: "/courses",
@@ -34,7 +28,6 @@ const navLinks = [
       { name: "D Pharma", href: "/courses/dpharma" },
     ],
   },
-
   {
     name: "Resources",
     href: "/resources",
@@ -45,7 +38,6 @@ const navLinks = [
       { name: "Prospectus", href: "/resources/prospectus" },
     ],
   },
-
   {
     name: "Life@Teesta",
     href: "/life",
@@ -58,49 +50,50 @@ const navLinks = [
       { name: "Our Placement", href: "/life/placement" },
     ],
   },
-
   { name: "Hospitals", href: "/hospitals" },
   { name: "Contact Us", href: "/contact" },
 ];
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
+
   return (
     <nav className="bg-white shadow-md border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between h-[150px] px-20">
+
+      {/* 🔥 FIXED: removed fixed height + responsive padding */}
+      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-3 py-3 sm:px-4 md:px-10 md:py-5">
 
         {/* LEFT → LOGO + NAME */}
-        <div className="flex items-center gap-5 flex-shrink-0 ml-5">
+        <div className="ml-0 flex min-w-0 flex items-center gap-2 sm:gap-3 md:ml-5 md:gap-5 lg:flex-none">
 
+          {/* 🔥 FIXED: responsive logo */}
           <Image
-            src="/images/logos/Teesta.png"
+            src="/images/navbar/nav.jpg"
             alt="Teesta Nursing Institute"
-            width={150}
-            height={150}
-            className="object-contain opacity-90 mix-blend-multiply"
+            width={500}
+            height={100}
+            className="object-contain flex-shrink-0
+
+  h-[60px]
+  sm:h-[80px]
+  md:h-[110px]
+  lg:h-[120px]
+  xl:h-[150px]
+
+  w-auto"
           />
 
-          <div className="leading-tight w-[300px]">
-            <h1 className="font-montserrat text-4xl font-extrabold text-primary tracking-[0.45em]">
-              TEESTA
-            </h1>
 
-            <p className="font-extrabold text-[15px] uppercase tracking-[0.13em] text-slate-700 mt-1">
-              GROUP OF INSTITUTION
-            </p>
 
-            <p className="font-inter text-[12px] tracking-[0.25em] text-slate-700 mt-1 whitespace-nowrap">
-              CARE BEYOND COMPASSION
-            </p>
-          </div>
         </div>
 
-        {/* RIGHT → NAV LINKS */}
-        <div className="hidden md:flex items-center gap-1 ml-auto text-[15px] font-medium pr-4">
+        {/* RIGHT → NAV LINKS (desktop only) */}
+        <div className="hidden lg:flex items-center gap-1 ml-auto text-[15px] font-medium pr-4">
 
           {navLinks.map((link) => (
             <div key={link.name} className="relative group py-2">
 
-              {/* MAIN LINK */}
               {link.dropdown ? (
                 <div className="flex items-center gap-1 px-3 py-2 rounded-full text-primary whitespace-nowrap cursor-default">
                   {link.name}
@@ -134,13 +127,97 @@ export default function Navbar() {
                   ))}
                 </div>
               )}
-
             </div>
           ))}
+        </div>
 
+        {/* 🔥 NEW: MOBILE MENU BUTTON */}
+        <div className="ml-3 flex items-center lg:hidden">
+          {open ? (
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={() => {
+                setOpen(false);
+                setMobileDropdown(null);
+              }}
+              className="rounded-md p-1 text-primary transition hover:bg-primary/10"
+            >
+              <X className="h-6 w-6 cursor-pointer" />
+            </button>
+          ) : (
+            <button
+              type="button"
+              aria-label="Open menu"
+              onClick={() => setOpen(true)}
+              className="rounded-md p-1 text-primary transition hover:bg-primary/10"
+            >
+              <Menu className="h-6 w-6 cursor-pointer" />
+            </button>
+          )}
         </div>
 
       </div>
+
+      {/* 🔥 NEW: MOBILE MENU */}
+      {open && (
+        <div className="border-t bg-white px-4 pb-4 lg:hidden">
+          <div className="flex flex-col">
+            {navLinks.map((link) => (
+              <div key={link.name} className="border-b border-gray-200">
+                {link.dropdown ? (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setMobileDropdown((prev) => (prev === link.name ? null : link.name))
+                      }
+                      className="flex w-full items-center justify-between py-3 text-left text-primary"
+                    >
+                      <span>{link.name}</span>
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${mobileDropdown === link.name ? "rotate-180" : ""
+                          }`}
+                      />
+                    </button>
+
+                    {mobileDropdown === link.name && (
+                      <div className="pb-2 pl-3">
+                        {link.dropdown.map((item) => (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            className="block py-2 text-[14px] text-primary/90"
+                            onClick={() => {
+                              setOpen(false);
+                              setMobileDropdown(null);
+                            }}
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="block py-3 text-primary"
+                    onClick={() => {
+                      setOpen(false);
+                      setMobileDropdown(null);
+                    }}
+                  >
+                    {link.name}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
     </nav>
   );
 }

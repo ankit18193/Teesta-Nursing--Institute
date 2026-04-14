@@ -23,8 +23,8 @@ const slides = [
     {
         img: "/images/hero/hero0.jpg",
         align: "left",
-        title: "Committed to",
-        highlight: "Quality Healthcare Training",
+        title: "Dedicated to",
+        highlight: "Medical Mastery",
         desc: "Building skilled professionals through innovation, discipline, and practical excellence.",
     },
     {
@@ -47,7 +47,7 @@ export default function Hero() {
     const [animateIndex, setAnimateIndex] = useState(0);
 
     return (
-        <section className="relative w-full h-[90vh]">
+        <section className="relative w-full h-[52vh] sm:h-[62vh] md:h-[75vh] lg:h-[90vh]">
 
             <Swiper
                 modules={[Navigation, Autoplay, Pagination]}
@@ -94,17 +94,17 @@ export default function Hero() {
                             >
 
                                 <div
-                                    className={`max-w-[600px] px-6 md:px-10 text-white ${slide.align === "right"
-                                        ? "text-right mr-10"
+                                    className={`max-w-[92vw] sm:max-w-[78vw] md:max-w-[600px] px-4 sm:px-6 md:px-10 text-white ${slide.align === "right"
+                                        ? "text-right mr-4 sm:mr-6 md:mr-10"
                                         : slide.align === "center"
                                             ? "text-center"
-                                            : "ml-10"
+                                            : "ml-4 sm:ml-6 md:ml-10"
                                         }`}
                                 >
 
                                     {/* HEADING */}
                                     <h1
-                                        className={`text-4xl md:text-6xl font-extrabold leading-tight mb-4
+                                        className={`mb-2 text-2xl font-extrabold leading-tight sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl
                                             ${animateIndex === index ? "animate-drop" : "opacity-0"}
                                                `}
                                     >
@@ -116,7 +116,7 @@ export default function Hero() {
 
                                     {/* DESCRIPTION */}
                                     <p
-                                        className={`text-lg md:text-xl text-gray-200 mb-6
+                                        className={`mb-4 text-xs text-gray-200 sm:text-base md:mb-6 md:text-lg lg:text-xl
                                           ${animateIndex === index ? "animate-fadeUp delay-200" : "opacity-0"}
                                            `}
                                     >
@@ -137,13 +137,13 @@ export default function Hero() {
                                                     : ""
                                             }`}
                                     >
-                                        <Link href="/resources/application">
-                                        <button className="bg-primary hover:bg-primary/90 px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition duration-200">
+                                        <Link href="/resources/application" className="inline-block">
+                                        <button className="rounded-lg bg-primary px-4 py-2 text-xs font-semibold shadow-md transition duration-200 hover:bg-primary/90 hover:shadow-lg sm:px-6 sm:py-3 sm:text-base">
                                             Apply Now
                                         </button>
                                         </Link>
 
-                                        <button className="border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition duration-200">
+                                        <button className="rounded-lg border border-white px-4 py-2 text-xs font-semibold transition duration-200 hover:bg-white hover:text-black sm:px-6 sm:py-3 sm:text-base">
                                             Explore Courses
                                         </button>
                                     </div>
@@ -158,7 +158,7 @@ export default function Hero() {
             </Swiper>
 
             {/* ARROWS */}
-            <div className="absolute inset-0 flex items-center justify-between px-6 z-20 pointer-events-none">
+            <div className="pointer-events-none absolute inset-0 z-20 hidden items-center justify-between px-6 md:flex">
 
                 <button className="swiper-button-prev-custom pointer-events-auto bg-white/20 backdrop-blur-md border border-white/30 w-12 h-12 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition">
                     ❮
