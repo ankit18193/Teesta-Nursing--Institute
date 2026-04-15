@@ -4,25 +4,41 @@ import { checkAuth } from "@/lib/auth";
 import { noticeSchema } from "@/lib/notice_validation";
 
 // GET all notices
-export async function GET() {
+export async function GET(req: Request) {
   try {
+    const { searchParams } = new URL(req.url);
+
+    const page = Number(searchParams.get("page")) || 1;
+    const limit = Number(searchParams.get("limit")) || 5;
+
+    const skip = (page - 1) * limit;
+
     const notices = await prisma.notice.findMany({
       orderBy: { createdAt: "desc" },
+      skip,
+      take: limit,
     });
+
+    const total = await prisma.notice.count();
 
     return NextResponse.json({
       success: true,
       data: notices,
+      meta: {
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+      },
     });
   } catch (error) {
-    console.error("GET NOTICE ERROR")
+    console.error("GET NOTICE ERROR");
     return NextResponse.json(
       { success: false, message: "Something went wrong" },
       { status: 500 }
     );
   }
 }
-
 // POST create notice
 export async function POST(req: Request) {
   try {

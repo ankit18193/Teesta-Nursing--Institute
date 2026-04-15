@@ -1,14 +1,34 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import api from "@/lib/api";
 import ContactLayout from "@/components/contact/ContactLayout";
 
 export default function ContactPage() {
+  const [contact, setContact] = useState<any>(null);
+
+  useEffect(() => {
+    fetchContact();
+  }, []);
+
+  const fetchContact = async () => {
+    try {
+      const res = await api.get("/contact");
+
+      if (res.data.success) {
+        setContact(res.data.data);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <ContactLayout>
 
       <div className="space-y-16">
 
-        {/* 🔥 HERO */}
+        {/* HERO */}
         <section className="relative rounded-3xl overflow-hidden">
 
           <div className="absolute inset-0">
@@ -31,10 +51,10 @@ export default function ContactPage() {
 
         </section>
 
-        {/* 🔥 MAIN SECTION */}
+        {/* MAIN SECTION */}
         <section className="grid lg:grid-cols-2 gap-10">
 
-          {/* 📝 FORM */}
+          {/* FORM */}
           <div className="bg-white rounded-3xl shadow-md border p-6 md:p-8 space-y-5">
 
             <h2 className="text-xl font-semibold text-gray-800">
@@ -75,7 +95,7 @@ export default function ContactPage() {
 
           </div>
 
-          {/* 📍 INFO PANEL */}
+          {/* INFO PANEL */}
           <div className="space-y-6">
 
             <div className="bg-gradient-to-br from-primary/10 to-white rounded-2xl p-6 border border-primary/20 shadow-md space-y-5">
@@ -90,7 +110,7 @@ export default function ContactPage() {
                 <div>
                   <p className="text-sm font-medium text-gray-700">Address</p>
                   <p className="text-sm text-gray-600">
-                  MFV3 + 5FP, Teesta Campus, VIP Road, South Shanti Nagar, Ananda Pally, Siliguri, West Bengal- 734006
+                    {contact?.address || "Loading..."}
                   </p>
                 </div>
               </div>
@@ -101,7 +121,7 @@ export default function ContactPage() {
                 <div>
                   <p className="text-sm font-medium text-gray-700">Phone</p>
                   <p className="text-sm text-gray-600">
-                    +91-9771406258 | +91-9733135555
+                    {contact?.phone || "Loading..."}
                   </p>
                 </div>
               </div>
@@ -112,14 +132,14 @@ export default function ContactPage() {
                 <div>
                   <p className="text-sm font-medium text-gray-700">Email</p>
                   <p className="text-sm text-gray-600">
-                    info@teesta.edu.in
+                    {contact?.email || "Loading..."}
                   </p>
                 </div>
               </div>
 
-              {/* CTA */}
+              {/* CALL BUTTON */}
               <a
-                href="tel:+919876543210"
+                href={`tel:${contact?.phone || ""}`}
                 className="inline-block mt-3 px-5 py-2 bg-primary text-white rounded-lg shadow hover:bg-primary/90 transition"
               >
                 Call Now
@@ -131,23 +151,22 @@ export default function ContactPage() {
 
         </section>
 
-        {/* 🔥 MAP */}
+        {/* MAP */}
         <section className="relative rounded-3xl overflow-hidden h-[350px] shadow-lg">
 
           <iframe
             src={`https://maps.google.com/maps?q=${encodeURIComponent(
-              "Teesta Nursing Institute Siliguri"
+              contact?.address || "Teesta Nursing Institute Siliguri"
             )}&z=15&output=embed`}
             className="absolute inset-0 w-full h-full border-0"
             loading="lazy"
           ></iframe>
 
-          {/* 🔥 Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
 
           <div className="relative h-full flex items-end p-6">
             <p className="text-white text-sm font-medium">
-              📍 Visit our campus in Siliguri
+              📍 Visit our campus
             </p>
           </div>
 

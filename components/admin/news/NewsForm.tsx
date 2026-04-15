@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import api from "@/lib/api";
 
 /* TYPES */
 type News = {
   id?: number;
   title: string;
-  desc: string;
+  content: string; // ✅ fixed
   image?: string;
 };
 
@@ -17,19 +18,20 @@ type Props = {
 
 export default function NewsForm({ onClose, initialData }: Props) {
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  const [content, setContent] = useState("");
   const [image, setImage] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  /* PREFILL (EDIT) */
+  /* PREFILL (EDIT MODE) */
   useEffect(() => {
     if (initialData) {
       setTitle(initialData.title);
-      setDesc(initialData.desc);
+      setContent(initialData.content);
       setImage(initialData.image || null);
     }
   }, [initialData]);
 
-  /* IMAGE HANDLER (UI ONLY) */
+  /* IMAGE PREVIEW (UI ONLY) */
   const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -38,16 +40,43 @@ export default function NewsForm({ onClose, initialData }: Props) {
     setImage(url);
   };
 
-  const handleSubmit = () => {
-    if (!title || !desc) return;
+  /* SUBMIT */
+  const handleSubmit = async () => {
+    if (!title.trim() || !content.trim()) {
+      alert("Title and content required");
+      return;
+    }
 
-    console.log("News Submitted:", {
-      title,
-      desc,
-      image,
-    });
+    try {
+      setLoading(true);
 
-    onClose();
+      if (initialData) {
+        // UPDATE
+        await api.patch(`/news/${initialData.id}`, {
+          title,
+          content,
+          image,
+        });
+      } else {
+        // CREATE
+        await api.post("/news", {
+          title,
+          content,
+          image,
+        });
+      }
+
+      alert("News saved ✅");
+      onClose();
+
+      // simple refresh
+      window.location.reload();
+    } catch (err: any) {
+      console.error(err);
+      alert(err.response?.data?.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -71,12 +100,12 @@ export default function NewsForm({ onClose, initialData }: Props) {
             />
           </div>
 
-          {/* DESC */}
+          {/* CONTENT */}
           <div>
             <label className="text-sm text-gray-600">Description</label>
             <textarea
-              value={desc}
-              onChange={(e) => setDesc(e.target.value)}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
               rows={3}
               className="w-full mt-1 px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-primary"
             />
@@ -113,9 +142,10 @@ export default function NewsForm({ onClose, initialData }: Props) {
 
           <button
             onClick={handleSubmit}
+            disabled={loading}
             className="px-4 py-2 bg-primary text-white rounded-lg text-sm"
           >
-            {initialData ? "Update" : "Save"}
+            {loading ? "Saving..." : initialData ? "Update" : "Save"}
           </button>
 
         </div>

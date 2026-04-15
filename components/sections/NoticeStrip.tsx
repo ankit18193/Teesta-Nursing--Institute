@@ -2,10 +2,11 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NewsPreviewModal from "@/components/resources/NewsPreviewModal";
+import api from "@/lib/api"
 
-import "swiper/css";
+import "swiper/css/bundle";
 
 interface NoticeItem {
   title: string;
@@ -13,28 +14,26 @@ interface NoticeItem {
   pdf?: string;
 }
 
-const notices = [
-  {
-    title: "Examination Notice",
-    description:
-      "Final examination schedule for GNM, B.Sc Nursing, and Pharmacy courses has been published.",
-    pdf: "/pdfs/exam.pdf", // ✅ added
-  },
-  {
-    title: "Admission Open 2026",
-    description:
-      "Applications are now open for the 2026 academic session.",
-  },
-  {
-    title: "Clinical Training Update",
-    description:
-      "New hospital-based training modules have been introduced.",
-    pdf: "/pdfs/training.pdf", // ✅ added
-  },
-];
-
 export default function NoticeStrip() {
   const [selectedNotice, setSelectedNotice] = useState<NoticeItem | null>(null);
+  const [notices, setNotices] = useState<NoticeItem[]>([]);
+
+  useEffect(() => {
+  fetchNotices();
+}, []);
+
+const fetchNotices = async () => {
+  const res = await api.get("/notices");
+
+  if (res.data.success) {
+    setNotices(
+      res.data.data.map((n: any) => ({
+        title: n.title,
+        description: n.content, // ✅ mapped
+      }))
+    );
+  }
+};
 
   return (
     <section className="relative z-30 mt-10 mb-6 px-6">

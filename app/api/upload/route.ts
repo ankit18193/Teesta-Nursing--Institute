@@ -11,12 +11,12 @@ cloudinary.config({
 export async function POST(req: Request) {
   try {
           const user=checkAuth(req);
-          if (!user) {
-        return NextResponse.json(
-          { success: false, message: "Unauthorized" },
-          { status: 401 }
-        );
-      }
+      //     if (!user) {
+      //   return NextResponse.json(
+      //     { success: false, message: "Unauthorized" },
+      //     { status: 401 }
+      //   );
+      // }
     const body = await req.json();
     const { image } = body; 
 
