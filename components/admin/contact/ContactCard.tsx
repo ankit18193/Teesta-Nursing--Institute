@@ -1,12 +1,21 @@
-"use client";
+import { useEffect, useState } from "react";
+import api from "@/lib/api";
 
 export default function ContactCard() {
-  // dummy data for now
-  const data = {
-    address: "Sevoke Road, Siliguri, West Bengal 734001",
-    phone: "+91 9876543210",
-    email: "info@teesta.edu.in",
+  const [data, setData] = useState<any>(null);
+
+  useEffect(() => {
+    fetchContact();
+  }, []);
+
+  const fetchContact = async () => {
+    const res = await api.get("/contact");
+    if (res.data.success) {
+      setData(res.data.data);
+    }
   };
+
+  if (!data) return null;
 
   return (
     <div className="bg-white rounded-xl shadow-sm border p-6 space-y-3">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import api from "@/lib/api"
 
 type Props = {
   onClose: () => void;
@@ -11,10 +12,26 @@ export default function ContactForm({ onClose }: Props) {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleSubmit = () => {
-    console.log("Contact Updated:", { address, phone, email });
+const handleSubmit = async () => {
+  try {
+    const res = await api.put("/contact", {
+      address,
+      phone,
+      email,
+    });
+
+    if (!res.data.success) {
+      alert(res.data.message);
+      return;
+    }
+
+    alert("Contact updated ✅");
     onClose();
-  };
+    window.location.reload(); // simple refresh
+  } catch (err: any) {
+    alert(err.response?.data?.message || "Error");
+  }
+};
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">

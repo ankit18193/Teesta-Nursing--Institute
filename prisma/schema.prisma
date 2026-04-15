@@ -66,6 +66,21 @@ model Inquiry {
   createdAt DateTime @default(now())
 }
 
+model Contact {
+  id      Int     @id @default(1)
+  address String
+  phone   String
+  email   String
+}
+
+model News {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String   // ✅ instead of desc
+  image     String?
+  createdAt DateTime @default(now())
+}
+
 enum LeadStatus {
   NEW
   CONTACTED
