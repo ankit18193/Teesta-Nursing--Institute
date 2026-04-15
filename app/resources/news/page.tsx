@@ -3,6 +3,7 @@
 import ResourcesLayout from "@/components/resources/ResourcesLayout";
 import NewsPreviewModal from "@/components/resources/NewsPreviewModal";
 import { useState } from "react";
+import CTASection from "@/components/common/CTASection";
 
 interface NewsItem {
   title: string;
@@ -183,6 +184,60 @@ export default function NewsPage() {
       <NewsPreviewModal
         news={selectedNews}
         onClose={() => setSelectedNews(null)}
+      />
+
+      <div className="grid mt-5 sm:grid-cols-2 md:grid-cols-3 gap-5">
+
+        <div className="border rounded-xl p-4 shadow-sm">
+          <h3 className="font-semibold text-primary mb-2">Latest Updates</h3>
+          <p className="text-sm text-gray-600">
+            Stay informed with real-time announcements and news.
+          </p>
+        </div>
+
+        <div className="border rounded-xl p-4 shadow-sm">
+          <h3 className="font-semibold text-primary mb-2">Events & Programs</h3>
+          <p className="text-sm text-gray-600">
+            Discover workshops, seminars, and campus activities.
+          </p>
+        </div>
+
+        <div className="border rounded-xl p-4 shadow-sm">
+          <h3 className="font-semibold text-primary mb-2">Achievements</h3>
+          <p className="text-sm text-gray-600">
+            Highlights of student and institutional success.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div className="w-full mt-5 max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+
+        <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+          The News & Events section keeps students, parents, and visitors informed
+          about the latest activities, achievements, and important updates at Teesta
+          Group of Institutions. From academic milestones to cultural programs and
+          healthcare initiatives, this section reflects the vibrant and dynamic
+          environment of the institution.
+          <br /><br />
+          Regular updates ensure that students stay connected with ongoing events,
+          workshops, seminars, and institutional announcements. It also highlights
+          achievements and recognitions that showcase the growth and success of
+          both students and the institution.
+          <br /><br />
+          By staying updated with this section, visitors gain a clear understanding
+          of the institution’s active involvement in education, healthcare, and
+          community development, making it a reliable and engaging place for learning.
+        </p>
+
+      </div>
+
+      <CTASection
+        title="Stay Updated With Every Achievement"
+        subtitle="Follow our latest news, events, and milestones as we continue to grow and excel."
+        primaryBtn={{ label: "View All Updates", href: "/resources/news" }}
+        secondaryBtn={{ label: "Apply Now", href: "/resources/application" }}
       />
 
     </ResourcesLayout>

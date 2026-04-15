@@ -1,3 +1,4 @@
+import CTASection from "@/components/common/CTASection";
 import LifeLayout from "@/components/life/LifeLayout";
 
 const features = [
@@ -49,7 +50,7 @@ export default function TransportPage() {
             </h1>
 
             <p className="text-sm md:text-base opacity-90">
-            Our well-managed transport system ensures safe, comfortable, and timely travel for students across multiple routes.
+              Our well-managed transport system ensures safe, comfortable, and timely travel for students across multiple routes.
             </p>
           </div>
 
@@ -69,7 +70,7 @@ export default function TransportPage() {
             <img
               src="/images/life/bus2.jpg"
               alt="Transport Facility"
-              className="w-full h-full object-cover hover:scale-105 transition duration-500"
+              className="w-full h-[500px] object-cover hover:scale-105 transition duration-500"
             />
           </div>
         </section>
@@ -125,6 +126,31 @@ export default function TransportPage() {
         </section>
 
       </div>
+
+
+      <div className="w-full mt-5 max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+        <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+          Teesta Group of Institutions provides reliable and safe transportation
+          facilities for students and staff. The transport system is designed to ensure
+          convenient connectivity between the campus and surrounding areas.
+          <br /><br />
+          With well-maintained vehicles and planned routes, students can travel safely
+          and comfortably. The transportation service supports punctuality and helps
+          students focus on their academic responsibilities.
+          <br /><br />
+          The institution prioritizes safety, efficiency, and accessibility in its
+          transport services to provide a hassle-free commuting experience.
+        </p>
+      </div>
+
+      <CTASection
+        title="Safe & Reliable Transportation"
+        subtitle="Travel comfortably with our well-organized transport system."
+        primaryBtn={{ label: "Check Routes", href: "/life/transport" }}
+        secondaryBtn={{ label: "Apply Now", href: "/resources/application" }}
+      />
+
+
     </LifeLayout>
   );
 }

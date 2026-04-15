@@ -1,6 +1,7 @@
 "use client";
 
 import AboutLayout from "@/components/about/AboutLayout";
+import CTASection from "@/components/common/CTASection";
 
 export default function LeadershipPage() {
   return (
@@ -34,7 +35,7 @@ export default function LeadershipPage() {
 
         {/* 🔥 INTRO */}
         <div className="max-w-3xl">
-          <p className="text-gray-600 leading-relaxed text-[15px]">
+          <p className="text-gray-600 leading-relaxed  text-justify text-[15px]">
             Our leadership team is the driving force behind the vision and growth of
             Teesta Group of Institutions. With a strong foundation in academic excellence
             and years of industry experience, they guide the institution towards innovation,
@@ -67,7 +68,7 @@ export default function LeadershipPage() {
                 Director
               </h3>
 
-              <p className="text-gray-600 leading-relaxed text-[15px]">
+              <p className="text-gray-600 leading-relaxed text-justify text-[15px]">
                 The Director plays a pivotal role in shaping the academic direction
                 of the institution, ensuring that educational standards remain aligned
                 with modern healthcare practices. With a focus on innovation and quality,
@@ -101,7 +102,7 @@ export default function LeadershipPage() {
                 Principal
               </h3>
 
-              <p className="text-gray-600 leading-relaxed text-[15px]">
+              <p className="text-gray-600 leading-relaxed text-justify text-[15px]">
                 The Principal oversees the day-to-day academic and administrative
                 functioning of the institution, ensuring smooth operations and a
                 high standard of education. With a student-centric approach, the
@@ -118,6 +119,31 @@ export default function LeadershipPage() {
         </div>
 
       </div>
+
+      <div className="w-full mt-5 max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+
+        <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+          The leadership team at Teesta Group of Institutions plays a crucial role
+          in shaping the academic and professional direction of the institute.
+          With a focus on innovation, discipline, and student success, the leadership
+          ensures that every initiative aligns with the institution’s core values.
+          <br /><br />
+          Through strategic planning and continuous improvement, the leadership
+          fosters an environment where students receive quality education,
+          practical exposure, and opportunities to grow both personally and professionally.
+          <br /><br />
+          This strong leadership foundation helps maintain high academic standards
+          and prepares students to excel in competitive healthcare and professional domains.
+        </p>
+
+      </div>
+
+      <CTASection
+        title="Grow Under Strong Leadership"
+        subtitle="Experience guidance, mentorship, and a learning environment designed for success."
+        primaryBtn={{ label: "Join Now", href: "/resources/application" }}
+        secondaryBtn={{ label: "View Programs", href: "/courses" }}
+      />
 
     </AboutLayout>
   );

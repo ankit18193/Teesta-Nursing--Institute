@@ -1,15 +1,18 @@
 "use client";
 
+import CTASection from "@/components/common/CTASection";
 import CoursesLayout from "@/components/courses/CoursesLayout";
 
 export default function DPharmaPage() {
   return (
     <CoursesLayout title="D.Pharm">
 
-      <div className="space-y-16">
+      {/* ✅ MATCHED: spacing system */}
+      <div className="space-y-12 sm:space-y-16 md:space-y-20">
 
-        {/* 🔥 HERO (ADDED) */}
-        <section className="relative h-[300px] md:h-[380px] rounded-3xl overflow-hidden flex items-center">
+        {/* 🔥 HERO */}
+        {/* ✅ MATCHED: hero scaling */}
+        <section className="relative flex h-[220px] items-center overflow-hidden rounded-2xl sm:h-[340px] md:h-[400px] md:rounded-3xl">
 
           <div className="absolute inset-0">
             <img
@@ -20,12 +23,13 @@ export default function DPharmaPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"></div>
           </div>
 
-          <div className="relative z-10 p-6 md:p-16 max-w-3xl mb-5px text-white space-y-3">
-            <h1 className="text-3xl md:text-4xl font-bold">
+          {/* ✅ MATCHED: text scaling */}
+          <div className="relative z-10 max-w-3xl space-y-3 p-4 text-white sm:p-6 md:space-y-4 md:p-12 lg:p-16">
+            <h1 className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">
               Diploma in Pharmacy (D.Pharm)
             </h1>
 
-            <p className="text-sm md:text-base opacity-90">
+            <p className="text-xs leading-relaxed opacity-90 sm:text-sm md:text-base">
               Building a strong foundation in pharmaceutical sciences with practical
               skills, industry exposure, and real-world healthcare training.
             </p>
@@ -34,41 +38,49 @@ export default function DPharmaPage() {
         </section>
 
 
-        {/* 🔥 EXISTING HERO CONTENT (UNCHANGED) */}
-        <div className="grid md:grid-cols-2 gap-10 items-center">
+        {/* 🔥 IMAGE + CONTENT */}
+        {/* ✅ MATCHED: grid + gap scaling */}
+        <div className="grid items-center gap-6 sm:gap-8 md:grid-cols-2 md:gap-10">
 
-          <div className="overflow-hidden rounded-2xl shadow-lg">
+          {/* ✅ MATCHED: image scaling */}
+          <div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl shadow-md md:mx-0 md:max-w-none">
             <img
               src="/images/courses/dp.png"
               alt="D.Pharm"
-              className="w-full h-[320px] object-cover hover:scale-105 transition duration-500"
+              className="h-[220px] w-full object-cover transition duration-500 hover:scale-105 sm:h-[340px] md:h-[420px] lg:h-[520px]"
             />
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold text-primary mb-4">
+            {/* ✅ MATCHED: heading scaling */}
+            <h2 className="mb-3 text-xl font-semibold text-primary sm:text-2xl">
               Diploma in Pharmacy (D.Pharm)
             </h2>
 
-            <p className="text-gray-600 leading-relaxed text-[15px]">
-              The Diploma in Pharmacy (D.Pharm) program is designed to provide
-              foundational knowledge in pharmaceutical sciences and prepare students
-              for entry-level roles in the healthcare and pharmacy sector.
+            {/* ✅ MATCHED: text scaling */}
+            <p className="text-[13px] leading-relaxed text-gray-600 sm:text-[14px] md:text-[15px] text-justify">
+              The Diploma in Pharmacy (D.Pharm) program is designed to provide essential
+              knowledge of pharmaceutical sciences and prepare students for entry-level
+              roles in the healthcare sector. The course focuses on practical skills such
+              as drug dispensing, prescription handling, and patient care in pharmacy settings.
               <br /><br />
-              The course focuses on practical skills such as drug dispensing,
-              prescription handling, and patient care, enabling students to become
-              job-ready professionals in a short duration.
+              With a strong emphasis on hands-on training and real-world exposure, students
+              develop the confidence to work in medical stores, hospitals, and healthcare
+              environments. The program also lays a foundation for further studies like
+              B.Pharm, allowing students to expand their career opportunities in the
+              pharmaceutical field.
             </p>
           </div>
 
         </div>
 
 
-        {/* 🔥 HIGHLIGHTS (UPGRADED UI) */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* 🔥 HIGHLIGHTS */}
+        {/* ✅ MATCHED: card system */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
 
-          <div className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-            <h3 className="text-lg font-semibold text-primary mb-2">
+          <div className="bg-white border rounded-xl p-5 shadow-sm hover:shadow-md transition">
+            <h3 className="font-semibold text-primary mb-2">
               Practical Training
             </h3>
             <p className="text-sm text-gray-600">
@@ -76,8 +88,8 @@ export default function DPharmaPage() {
             </p>
           </div>
 
-          <div className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-            <h3 className="text-lg font-semibold text-primary mb-2">
+          <div className="bg-white border rounded-xl p-5 shadow-sm hover:shadow-md transition">
+            <h3 className="font-semibold text-primary mb-2">
               Quick Career Entry
             </h3>
             <p className="text-sm text-gray-600">
@@ -85,8 +97,8 @@ export default function DPharmaPage() {
             </p>
           </div>
 
-          <div className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-            <h3 className="text-lg font-semibold text-primary mb-2">
+          <div className="bg-white border rounded-xl p-5 shadow-sm hover:shadow-md transition">
+            <h3 className="font-semibold text-primary mb-2">
               Industry Ready
             </h3>
             <p className="text-sm text-gray-600">
@@ -97,13 +109,16 @@ export default function DPharmaPage() {
         </div>
 
 
-        {/* 🔥 INSTITUTION ADVANTAGE */}
-        <div className="bg-gradient-to-br from-primary/10 to-white border border-primary/20 rounded-2xl p-6 shadow-sm">
-          <h3 className="text-lg font-semibold text-primary mb-3">
+        {/* 🔥 ADVANTAGE */}
+        {/* ✅ MATCHED: highlight style */}
+        <div className="space-y-4 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 to-gray-50 p-4 text-xs leading-relaxed text-gray-600 shadow-sm text-justify sm:p-5 sm:text-sm md:p-6">
+
+          <h3 className="text-primary font-semibold flex items-center gap-2">
+            <span className="h-4 w-1 bg-primary rounded-full"></span>
             Our Institutional Advantage
           </h3>
 
-          <p className="text-gray-600 text-sm leading-relaxed">
+          <p>
             At Teesta Group of Institutions, students benefit from access to
             modern pharmacy laboratories and healthcare environments.
             <br /><br />
@@ -111,6 +126,7 @@ export default function DPharmaPage() {
             helping students develop the skills required for real-world pharmacy
             practice and healthcare services.
           </p>
+
         </div>
 
 
@@ -188,18 +204,39 @@ export default function DPharmaPage() {
         </div>
 
 
+
+
         {/* 🔥 EXTRA */}
-        <div className="max-w-3xl">
-          <p className="text-gray-600 leading-relaxed text-[15px]">
-            The D.Pharm program serves as a strong foundation for a career in
-            pharmacy. It equips students with essential knowledge and practical
-            skills required for professional pharmacy practice.
+        {/* ✅ MATCHED: text scaling */}
+        <div className="w-full max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+
+          <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+            The Diploma in Pharmacy (D.Pharm) program is designed to build a strong
+            foundation in pharmaceutical sciences and prepare students for immediate
+            entry into the healthcare sector. The course focuses on practical knowledge,
+            enabling students to understand drug dispensing, prescription handling, and
+            patient care effectively.
             <br /><br />
-            Graduates can either begin working immediately or pursue higher
-            education such as B.Pharm, opening pathways to advanced opportunities
-            in the pharmaceutical industry.
+            Through hands-on training in laboratories and pharmacy environments, students
+            develop essential skills required for real-world pharmaceutical practice. The
+            program also emphasizes professional ethics, communication skills, and
+            responsibility, which are crucial for working in healthcare settings.
+            <br /><br />
+            Graduates of the D.Pharm program can pursue careers as pharmacists, medical
+            store managers, and healthcare assistants in hospitals and community settings.
+            The course also provides an opportunity to continue higher education, such as
+            B.Pharm, enabling students to expand their career prospects and achieve
+            long-term professional growth.
           </p>
+
         </div>
+
+        <CTASection
+          title="Kickstart Your Pharmacy Career"
+          subtitle="Gain practical skills and step into the healthcare industry quickly."
+          primaryBtn={{ label: "Apply Now", href: "/resources/application" }}
+          secondaryBtn={{ label: "Know More", href: "/courses/dpharma" }}
+        />
 
       </div>
 

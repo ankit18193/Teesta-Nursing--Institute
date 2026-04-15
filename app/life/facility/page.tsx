@@ -1,5 +1,6 @@
 "use client";
 
+import CTASection from "@/components/common/CTASection";
 import LifeLayout from "@/components/life/LifeLayout";
 
 const facilities = [
@@ -174,25 +175,33 @@ export default function FacilityPage() {
 
                 </section>
 
-                {/* 🔥 CTA */}
-                <section className="relative rounded-3xl bg-primary text-white p-10 text-center overflow-hidden">
-
-                    <div className="absolute inset-0 opacity-10 bg-[url('/images/life/campus.png')] bg-cover"></div>
-
-                    <div className="relative space-y-3">
-                        <h3 className="text-2xl font-semibold">
-                            Facilities That Empower Your Journey
-                        </h3>
-
-                        <p className="text-sm opacity-90 max-w-xl mx-auto">
-                            Experience a campus designed to support your learning,
-                            growth, and success at every step.
-                        </p>
-                    </div>
-
-                </section>
+                
 
             </div>
+
+            <div className="w-full mt-5 max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+                <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+                    Teesta Group of Institutions offers modern facilities designed to support
+                    academic excellence and student well-being. From well-equipped laboratories
+                    to advanced classrooms, every facility is created to enhance the learning
+                    experience.
+                    <br /><br />
+                    Students have access to libraries, clinical training centers, and recreational
+                    spaces that contribute to both academic and personal development. These
+                    facilities ensure that students receive practical exposure along with
+                    theoretical knowledge.
+                    <br /><br />
+                    The institution continuously upgrades its infrastructure to meet industry
+                    standards and provide students with the best possible environment for growth.
+                </p>
+            </div>
+
+            <CTASection
+                title="Explore Our Modern Facilities"
+                subtitle="Learn in an environment equipped with advanced infrastructure and resources."
+                primaryBtn={{ label: "View Campus", href: "/life/campus" }}
+                secondaryBtn={{ label: "Apply Now", href: "/resources/application" }}
+            />
 
         </LifeLayout>
     );

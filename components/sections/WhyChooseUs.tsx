@@ -60,17 +60,20 @@ export default function WhyChooseUs() {
           </div>
 
           {/* PARAGRAPH */}
+          <div className="space-y-5 text-light leading-relaxed text-[15.5px] text-left md:text-justify sm:text-justify text-justify  custom-justify p-1 ">
           <p className="text-light leading-relaxed text-[15.5px] mb-12 space-y-4">
             At <span className="text-dark font-medium">TEESTA Group of Institutions</span>, we believe that true healthcare education goes far beyond textbooks. With experienced faculty, modern teaching methodologies, and well-equipped laboratories, we ensure that every student receives a strong foundation in both academic knowledge and practical skills.
           </p>
 
           <p className="text-light leading-relaxed text-[15.5px] mb-12">
-            Our emphasis on clinical exposure allows students to gain real-world experience in professional healthcare environments, helping them build confidence from the very beginning. Recognized by leading authorities such as <span className="text-dark font-medium">INC</span> and <span className="text-dark font-medium">WBNC</span>, our programs open doors to rewarding career opportunities in India and abroad.
+            Our emphasis on clinical exposure allows students to gain real-world experience in professional healthcare environments, helping them build confidence from the very beginning. Recognized by leading authorities such as <span className="text-dark font-medium">INC</span>,<span className="text-dark font-medium">PCI</span> and <span className="text-dark font-medium">WBNC</span>, our programs open doors to rewarding career opportunities in India and abroad.
           </p>
 
           <p className="text-light leading-relaxed text-[15.5px] mb-14">
             At TEESTA, we don’t just educate — we nurture compassionate, skilled, and future-ready healthcare professionals who are prepared to make a meaningful impact on society.
           </p>
+
+          </div>
 
           {/* GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -122,12 +125,13 @@ export default function WhyChooseUs() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative w-full h-[800px] md:h-[900px] rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-200"
+          className="relative w-full h-[290px] sm:h-[590px] md:h-[620px] lg:h-[620px] rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-200"
         >
           
             <Image
               src="/images/why/why1.jpg"
               alt="Clinical Training"
+              
               fill
               className="object-cover object-[center_50%]"
             />

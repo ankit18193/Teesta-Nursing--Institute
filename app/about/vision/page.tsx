@@ -1,6 +1,7 @@
 "use client";
 
 import AboutLayout from "@/components/about/AboutLayout";
+import CTASection from "@/components/common/CTASection";
 
 export default function VisionPage() {
   return (
@@ -101,6 +102,31 @@ export default function VisionPage() {
         </div>
 
       </div>
+
+      <div className="w-full mt-5 max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+
+        <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+          The vision of Teesta Group of Institutions is to create a center of excellence
+          in education that empowers students with knowledge, skills, and values required
+          to succeed in their professional lives. The institution aims to contribute to
+          society by producing competent and responsible individuals.
+          <br /><br />
+          Its mission focuses on providing quality education through modern teaching
+          methodologies, practical exposure, and a student-centered approach. The
+          institution is committed to fostering innovation, ethical values, and lifelong learning.
+          <br /><br />
+          By aligning its vision and mission with industry needs, Teesta ensures that
+          students are well-prepared to meet the challenges of the modern world.
+        </p>
+
+      </div>
+
+      <CTASection
+        title="Be Part of Our Mission"
+        subtitle="Join us in building a future driven by knowledge, innovation, and excellence."
+        primaryBtn={{ label: "Apply Today", href: "/resources/application" }}
+        secondaryBtn={{ label: "Know More", href: "/about" }}
+      />
 
     </AboutLayout>
   );

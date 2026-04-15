@@ -1,6 +1,7 @@
 
 
 
+import CTASection from "@/components/common/CTASection";
 import HospitalLayout from "@/components/hospitals/HospitalLayout";
 import { notFound } from "next/navigation";
 
@@ -177,7 +178,7 @@ export default async function HospitalPage({
                 "/images/hospitals/facilities/ssf1.jpg",
                 "/images/hospitals/facilities/ssf2.jpg",
                 "/images/hospitals/facilities/ssf3.jpg",
-                
+
             ],
         },
 
@@ -208,9 +209,9 @@ export default async function HospitalPage({
                 "Plays a vital role in delivering consistent and accessible healthcare services in the hill regions, with strong support for emergency care and maternal health in Kurseong and surrounding areas.",
 
             facilitiesImages: [
-               "/images/hospitals/facilities/af1.jpg",
-               "/images/hospitals/facilities/iopd2.jpg",
-               "/images/hospitals/facilities/ipd.jpg",
+                "/images/hospitals/facilities/af1.jpg",
+                "/images/hospitals/facilities/iopd2.jpg",
+                "/images/hospitals/facilities/ipd.jpg",
             ],
         },
 
@@ -244,7 +245,7 @@ export default async function HospitalPage({
                 "/images/hospitals/facilities/af2.jpg",
                 "/images/hospitals/facilities/af3.jpg",
             ]
-                
+
         },
 
         tufanganj: {
@@ -308,7 +309,7 @@ export default async function HospitalPage({
                 "/images/hospitals/facilities/f1.jpg",
                 "/images/hospitals/facilities/opd.jpg",
                 "/images/hospitals/facilities/lr.jpg",
-                
+
             ],
         },
     };
@@ -336,7 +337,7 @@ export default async function HospitalPage({
                     <h2 className="text-2xl font-bold text-primary mb-2">
                         {hospital.name}
                     </h2>
-                    <p className="text-gray-600">{hospital.about}</p>
+                    <p className="text-gray-600 text-justify">{hospital.about}</p>
 
 
                 </section>
@@ -481,6 +482,59 @@ export default async function HospitalPage({
                     </div>
                 </section>
             </div>
+
+            <div className="grid mt-5 sm:grid-cols-2 md:grid-cols-3 gap-5">
+
+                <div className="border rounded-xl p-4 shadow-sm">
+                    <h3 className="font-semibold text-primary mb-2">Real Patient Exposure</h3>
+                    <p className="text-sm text-gray-600">
+                        Learn directly from real healthcare situations.
+                    </p>
+                </div>
+
+                <div className="border rounded-xl p-4 shadow-sm">
+                    <h3 className="font-semibold text-primary mb-2">Hands-on Training</h3>
+                    <p className="text-sm text-gray-600">
+                        Practical experience under expert supervision.
+                    </p>
+                </div>
+
+                <div className="border rounded-xl p-4 shadow-sm">
+                    <h3 className="font-semibold text-primary mb-2">Industry Readiness</h3>
+                    <p className="text-sm text-gray-600">
+                        Become confident and job-ready professionals.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div className="w-full mt-5 max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+
+                <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+                    The associated hospitals of Teesta Group of Institutions play a crucial role
+                    in providing students with real-world clinical exposure and hands-on training.
+                    These hospitals serve as practical learning environments where students can
+                    observe, assist, and actively participate in patient care under professional supervision.
+                    <br /><br />
+                    Through continuous interaction with healthcare professionals and real patients,
+                    students develop essential clinical skills, decision-making abilities, and
+                    confidence required in the medical field. This exposure bridges the gap between
+                    theoretical knowledge and practical application.
+                    <br /><br />
+                    The collaboration with multiple hospitals ensures that students experience
+                    diverse medical cases and healthcare environments, preparing them to become
+                    competent and industry-ready healthcare professionals.
+                </p>
+
+            </div>
+
+            <CTASection
+                title="Gain Real Hospital Experience"
+                subtitle="Train in real healthcare environments and build strong clinical skills for your future."
+                primaryBtn={{ label: "Apply Now", href: "/resources/application" }}
+                secondaryBtn={{ label: "Explore Courses", href: "/courses" }}
+            />
         </HospitalLayout>
     );
 }

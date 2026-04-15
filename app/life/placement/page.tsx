@@ -1,5 +1,6 @@
 "use client";
 
+import CTASection from "@/components/common/CTASection";
 import LifeLayout from "@/components/life/LifeLayout";
 
 const stats = [
@@ -90,24 +91,24 @@ export default function PlacementPage() {
         {/* 🔥 RECRUITERS */}
         <section className="space-y-10">
 
-  {/* 🔥 HEADER */}
-  <div className="max-w-2xl space-y-2">
-    <h2 className="text-2xl md:text-3xl font-semibold text-gray-800">
-      Our Recruiters
-    </h2>
+          {/* 🔥 HEADER */}
+          <div className="max-w-2xl space-y-2">
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800">
+              Our Recruiters
+            </h2>
 
-    <p className="text-sm text-gray-500">
-      Trusted healthcare institutions where our students build their careers.
-    </p>
-  </div>
+            <p className="text-sm text-gray-500">
+              Trusted healthcare institutions where our students build their careers.
+            </p>
+          </div>
 
-  {/* 🔥 GRID */}
-  <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {/* 🔥 GRID */}
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-    {recruiters.map((company, index) => (
-      <div
-        key={index}
-        className="
+            {recruiters.map((company, index) => (
+              <div
+                key={index}
+                className="
           group relative
           bg-white border rounded-2xl p-5
           flex flex-col items-center justify-center text-center
@@ -115,27 +116,27 @@ export default function PlacementPage() {
           hover:-translate-y-2
           transition-all duration-300
         "
-      >
+              >
 
-        {/* 🔥 LOGO / INITIAL */}
-        <div className="w-14 h-14 flex items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-lg mb-3 group-hover:scale-110 transition">
-          {company.charAt(0)}
-        </div>
+                {/* 🔥 LOGO / INITIAL */}
+                <div className="w-14 h-14 flex items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-lg mb-3 group-hover:scale-110 transition">
+                  {company.charAt(0)}
+                </div>
 
-        {/* 🔥 NAME */}
-        <p className="text-sm font-medium text-gray-700 group-hover:text-primary transition">
-          {company}
-        </p>
+                {/* 🔥 NAME */}
+                <p className="text-sm font-medium text-gray-700 group-hover:text-primary transition">
+                  {company}
+                </p>
 
-        {/* 🔥 HOVER GLOW */}
-        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 rounded-2xl transition pointer-events-none"></div>
+                {/* 🔥 HOVER GLOW */}
+                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 rounded-2xl transition pointer-events-none"></div>
 
-      </div>
-    ))}
+              </div>
+            ))}
 
-  </div>
+          </div>
 
-</section>
+        </section>
 
         {/* 🔥 STUDENTS (UPGRADED) */}
         <section className="space-y-6">
@@ -179,28 +180,30 @@ export default function PlacementPage() {
 
         </section>
 
-        {/* 🔥 CTA */}
-        <section className="relative rounded-3xl bg-primary text-white p-10 text-center overflow-hidden">
-
-          <div className="absolute inset-0 opacity-10 bg-[url('/images/life/campus.png')] bg-cover"></div>
-
-          <div className="relative space-y-3">
-            <h3 className="text-2xl font-semibold">
-              Build Your Career With Us
-            </h3>
-
-            <p className="text-sm opacity-90 max-w-xl mx-auto">
-              Join Teesta Group of Institutions and step into a successful healthcare career.
-            </p>
-
-            <button className="mt-4 bg-white text-primary px-6 py-2.5 rounded-lg font-medium hover:bg-gray-100 transition shadow-sm">
-              Apply Now
-            </button>
-          </div>
-
-        </section>
-
+        
       </div>
+
+      <div className="w-full mt-5  max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+        <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+          The placement cell at Teesta Group of Institutions is dedicated to helping
+          students build successful careers. With strong industry connections and
+          professional training, students are prepared to meet real-world job requirements.
+          <br /><br />
+          Regular training sessions, mock interviews, and skill development programs
+          ensure that students gain confidence and improve their employability.
+          <br /><br />
+          The institution focuses on providing placement opportunities in reputed
+          hospitals, healthcare organizations, and industries, helping students achieve
+          their career goals.
+        </p>
+      </div>
+
+      <CTASection
+        title="Build a Successful Career"
+        subtitle="Get placement support and start your professional journey with confidence."
+        primaryBtn={{ label: "View Opportunities", href: "/life/placement" }}
+        secondaryBtn={{ label: "Apply Now", href: "/resources/application" }}
+      />
 
     </LifeLayout>
   );

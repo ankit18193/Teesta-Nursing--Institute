@@ -16,7 +16,7 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-         className="relative w-full h-[600px] md:h-[700px] rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-200"
+          className="relative w-full h-[390px] sm:h-[690px] md:h-[750px] lg:h-[800px] rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-200"
         >
           <Image
             src="/images/about/about1.jpg"
@@ -50,7 +50,7 @@ export default function AboutSection() {
           <div className="w-16 h-1 bg-primary rounded mb-6"></div>
 
           {/* CONTENT BLOCKS */}
-          <div className="space-y-5 text-light leading-relaxed text-[15.5px]">
+          <div className="space-y-5 text-light leading-relaxed text-[15.5px] text-left md:text-justify sm:text-justify text-justify  custom-justify p-1 ">
 
             <p>
               <span className="font-semibold text-dark">
@@ -109,11 +109,11 @@ export default function AboutSection() {
 
           {/* CTA */}
           <Link href="/about/institutions">
-          <button className="mt-8 bg-primary hover:bg-primary/90 text-white px-7 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition duration-300">
-            Learn More
-          </button>
+            <button className="mt-8 bg-primary hover:bg-primary/90 text-white px-7 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition duration-300">
+              Learn More
+            </button>
           </Link>
-          
+
 
         </motion.div>
 

@@ -1,3 +1,4 @@
+import CTASection from "@/components/common/CTASection";
 import LifeLayout from "@/components/life/LifeLayout";
 
 const features = [
@@ -117,6 +118,29 @@ export default function HostelPage() {
           </p>
 
         </section>
+
+
+        <div className="w-full mt-5  max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+  <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+    Hostel life at Teesta Group of Institutions provides a safe, comfortable,
+    and student-friendly living environment. The hostels are designed to ensure
+    that students feel at home while focusing on their academic and personal growth.
+    <br /><br />
+    With proper facilities, disciplined routines, and a supportive atmosphere,
+    students develop independence, responsibility, and strong interpersonal skills.
+    The hostel environment also encourages bonding and teamwork among students.
+    <br /><br />
+    A well-managed hostel system ensures that students can focus on their studies
+    while enjoying a secure and enriching residential experience.
+  </p>
+</div>
+
+<CTASection
+  title="Comfortable & Secure Hostel Life"
+  subtitle="Stay in a safe environment designed for student comfort and growth."
+  primaryBtn={{ label: "View Facilities", href: "/life/facility" }}
+  secondaryBtn={{ label: "Apply Now", href: "/resources/application" }}
+/>
 
       </div>
     </LifeLayout>

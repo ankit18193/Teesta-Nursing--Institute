@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import LifeLayout from "@/components/life/LifeLayout";
 import Image from "next/image";
+import CTASection from "@/components/common/CTASection";
 
 interface GalleryItem {
     id: number;
@@ -27,13 +28,13 @@ export default function GalleryPage() {
 
     useEffect(() => {
         fetchGallery();
-      
+
         const interval = setInterval(() => {
-          fetchGallery();
+            fetchGallery();
         }, 5000);
-      
+
         return () => clearInterval(interval);
-      }, []);
+    }, []);
 
     if (images.length === 0) {
         return <div className="p-10 text-center">No images found</div>;
@@ -118,6 +119,28 @@ export default function GalleryPage() {
             <ImagePreviewModal
                 image={selectedImage}
                 onClose={() => setSelectedImage(null)}
+            />
+
+            <div className="w-full mt-5 max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+                <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+                    The gallery showcases memorable moments, events, and activities that reflect
+                    the vibrant life at Teesta Group of Institutions. It highlights academic
+                    achievements, cultural programs, and student participation across various events.
+                    <br /><br />
+                    Through images and visual stories, the gallery provides a glimpse into the
+                    dynamic campus environment and the experiences students gain during their journey.
+                    <br /><br />
+                    It serves as a window for visitors to understand the institution’s culture,
+                    values, and active student life.
+                </p>
+            </div>
+
+
+            <CTASection
+                title="Explore Moments That Define Us"
+                subtitle="Discover campus life, events, and student experiences through our gallery."
+                primaryBtn={{ label: "View Gallery", href: "/life/gallery" }}
+                secondaryBtn={{ label: "Apply Now", href: "/resources/application" }}
             />
         </LifeLayout>
     );

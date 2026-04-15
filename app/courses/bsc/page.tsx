@@ -1,15 +1,18 @@
 "use client";
 
+import CTASection from "@/components/common/CTASection";
 import CoursesLayout from "@/components/courses/CoursesLayout";
 
 export default function BScPage() {
   return (
     <CoursesLayout title="B.Sc Nursing">
 
-      <div className="space-y-16">
+      {/* ✅ MATCHED: spacing system like GNM */}
+      <div className="space-y-12 sm:space-y-16 md:space-y-20">
 
-        {/* 🔥 HERO (ADDED) */}
-        <section className="relative h-[300px] md:h-[380px] rounded-3xl overflow-hidden flex items-center">
+        {/* 🔥 HERO */}
+        {/* ✅ MATCHED: same hero scaling as GNM */}
+        <section className="relative flex h-[220px] items-center overflow-hidden rounded-2xl sm:h-[340px] md:h-[400px] md:rounded-3xl">
 
           <div className="absolute inset-0">
             <img
@@ -20,12 +23,13 @@ export default function BScPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10"></div>
           </div>
 
-          <div className="relative z-10 p-6 md:p-16 max-w-3xl text-white space-y-3">
-            <h1 className="text-3xl md:text-4xl font-bold">
+          {/* ✅ MATCHED: text scaling */}
+          <div className="relative z-10 max-w-3xl space-y-3 p-4 text-white sm:p-6 md:space-y-4 md:p-12 lg:p-16">
+            <h1 className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">
               Bachelor of Science in Nursing
             </h1>
 
-            <p className="text-sm md:text-base opacity-90">
+            <p className="text-xs leading-relaxed opacity-90 sm:text-sm md:text-base">
               Preparing skilled nursing professionals with advanced clinical knowledge,
               practical exposure, and compassionate patient care.
             </p>
@@ -34,40 +38,47 @@ export default function BScPage() {
         </section>
 
 
-        {/* 🔥 EXISTING HERO CONTENT (UNCHANGED) */}
-        <div className="grid md:grid-cols-2 gap-10 items-center">
+        {/* 🔥 IMAGE + CONTENT */}
+        {/* ✅ MATCHED: grid + gap scaling */}
+        <div className="grid items-center gap-6 sm:gap-8 md:grid-cols-2 md:gap-10">
 
-          <div className="w-full">
-            <div className="aspect-[4/3] sm:aspect-[16/10] md:aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
-              <img
-                src="/images/courses/bsc2.png"
-                alt="B.Sc Nursing"
-                className="w-full h-full object-cover object-center hover:scale-105 transition duration-500"
-              />
-            </div>
+          {/* ✅ FIXED: replaced aspect-ratio with GNM-style scaling */}
+          <div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl shadow-md md:mx-0 md:max-w-none">
+            <img
+              src="/images/courses/bsc2.png"
+              alt="B.Sc Nursing"
+              className="h-[220px] w-full object-cover transition duration-500 hover:scale-105 sm:h-[340px] md:h-[420px] lg:h-[520px]"
+            />
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold text-primary mb-4">
+            {/* ✅ MATCHED: heading scaling */}
+            <h2 className="mb-3 text-xl font-semibold text-primary sm:text-2xl">
               Bachelor of Science in Nursing (B.Sc Nursing)
             </h2>
 
-            <p className="text-gray-600 leading-relaxed text-[15px]">
-              The B.Sc Nursing program is a comprehensive undergraduate course designed
-              to develop highly skilled nursing professionals equipped with advanced
-              clinical knowledge and patient care expertise.
+            {/* ✅ MATCHED: text scaling */}
+            <p className="text-[13px] leading-relaxed text-gray-600 sm:text-[14px] md:text-[15px] text-justify">
+              The Bachelor of Science in Nursing (B.Sc Nursing) program is designed to
+              prepare students for professional roles in the healthcare sector by combining
+              strong academic knowledge with practical clinical training. The course focuses
+              on developing critical thinking, patient care skills, and a deep understanding
+              of modern medical practices required in nursing.
               <br /><br />
-              With a strong emphasis on scientific learning, practical exposure, and ethical
-              responsibility, students are trained to confidently handle complex healthcare
-              situations in modern medical environments.
+              Through structured learning and hospital exposure, students gain hands-on
+              experience in patient management, emergency care, and clinical procedures.
+              The program also emphasizes communication, teamwork, and ethical
+              responsibilities, ensuring that graduates are well-equipped to work in
+              hospitals and healthcare institutions or pursue higher education.
             </p>
           </div>
 
         </div>
 
 
-        {/* 🔥 HIGHLIGHTS (UPGRADED UI) */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* 🔥 HIGHLIGHTS */}
+        {/* ✅ MATCHED: card system like GNM (removed heavy animation) */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
 
           {[
             {
@@ -85,9 +96,9 @@ export default function BScPage() {
           ].map((item, i) => (
             <div
               key={i}
-              className="group bg-white border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+              className="bg-white border rounded-xl p-5 shadow-sm hover:shadow-md transition"
             >
-              <h3 className="text-lg font-semibold text-primary mb-2">
+              <h3 className="font-semibold text-primary mb-2">
                 {item.title}
               </h3>
               <p className="text-sm text-gray-600">
@@ -99,23 +110,28 @@ export default function BScPage() {
         </div>
 
 
-        {/* 🔥 INSTITUTION ADVANTAGE */}
-        <div className="bg-gradient-to-br from-primary/10 to-white border border-primary/20 rounded-2xl p-6 shadow-sm">
-          <h3 className="text-lg font-semibold text-primary mb-3">
+        {/* 🔥 ADVANTAGE */}
+        {/* ✅ MATCHED: highlight style from GNM */}
+        <div className="space-y-4 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 to-gray-50 p-4 text-xs leading-relaxed text-gray-600 shadow-sm text-justify sm:p-5 sm:text-sm md:p-6">
+
+          <h3 className="text-primary font-semibold flex items-center gap-2">
+            <span className="h-4 w-1 bg-primary rounded-full"></span>
             Our Institutional Advantage
           </h3>
 
-          <p className="text-gray-600 text-sm leading-relaxed">
+          <p>
             At Teesta Group of Institutions, students benefit from access to multiple
             hospitals and healthcare facilities, ensuring diverse and real-world clinical exposure.
             <br /><br />
             This integrated ecosystem enhances practical learning, professional development,
             and prepares students to become confident and competent healthcare professionals.
           </p>
+
         </div>
 
 
         {/* 🔥 ELIGIBILITY */}
+        {/* ✅ MATCHED: padding scaling */}
         <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition">
           <h3 className="text-lg font-semibold text-primary mb-4">
             Eligibility Criteria
@@ -144,6 +160,7 @@ export default function BScPage() {
 
 
         {/* 🔥 COURSE DETAILS */}
+        {/* ✅ MATCHED: grid scaling */}
         <div className="grid md:grid-cols-2 gap-8">
 
           <div className="border rounded-2xl p-6 shadow-sm hover:shadow-md transition">
@@ -176,16 +193,43 @@ export default function BScPage() {
         </div>
 
 
+
+
         {/* 🔥 EXTRA */}
-        <div className="max-w-3xl">
-          <p className="text-gray-600 leading-relaxed text-[15px]">
-            The B.Sc Nursing program prepares students to meet the dynamic needs of
-            the healthcare sector through academic excellence and practical training.
+        {/* ✅ MATCHED: text scaling */}
+        <div className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+
+          <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+            The Bachelor of Science in Nursing (B.Sc Nursing) program is designed to
+            develop highly skilled healthcare professionals equipped with advanced
+            clinical knowledge, critical thinking abilities, and a strong sense of
+            professional responsibility. The curriculum integrates theoretical learning
+            with extensive practical training, enabling students to understand modern
+            medical practices and patient care techniques in depth.
             <br /><br />
-            Graduates are well-equipped for multidisciplinary healthcare roles
-            and higher education opportunities.
+            Students are trained in diverse healthcare environments, where they gain
+            hands-on experience in patient management, emergency care, and clinical
+            procedures. The program also emphasizes leadership, communication, and
+            decision-making skills, preparing students to take on responsibilities in
+            multidisciplinary healthcare teams.
+            <br /><br />
+            Graduates of the B.Sc Nursing program have a wide range of career
+            opportunities in hospitals, healthcare institutions, research organizations,
+            and international medical sectors. The course also provides a strong
+            foundation for higher education and specialization, allowing students to
+            pursue advanced studies and build long-term careers in the healthcare
+            industry.
           </p>
+
         </div>
+
+
+        <CTASection
+          title="Shape Your Future in Healthcare"
+          subtitle="Gain advanced knowledge and unlock global opportunities in nursing."
+          primaryBtn={{ label: "Apply Now", href: "/resources/application" }}
+          secondaryBtn={{ label: "Explore Program", href: "/courses/bsc" }}
+        />
 
       </div>
 

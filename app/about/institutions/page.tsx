@@ -1,6 +1,7 @@
 "use client";
 
 import AboutLayout from "@/components/about/AboutLayout";
+import CTASection from "@/components/common/CTASection";
 import { motion } from "framer-motion";
 
 const institutes = [
@@ -67,7 +68,7 @@ export default function InstitutesSection() {
       <section className="px-3 py-8 sm:px-5 sm:py-12 md:px-6 md:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto">
 
-          
+
           {/* 🔥 HERO SECTION (POLISHED ONLY) */}
           <section className="relative flex h-[220px] items-center overflow-hidden rounded-2xl sm:h-[270px] md:h-[300px] md:rounded-3xl">
 
@@ -93,8 +94,8 @@ export default function InstitutesSection() {
           </section>
 
           {/* HEADER */}
-           {/* 🔥 HEADER (UI POLISHED — CONTENT SAME) */}
-           <motion.div
+          {/* 🔥 HEADER (UI POLISHED — CONTENT SAME) */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -366,7 +367,41 @@ export default function InstitutesSection() {
       </motion.div>
 
 
-      
+
+      <div className="w-full mt-5 max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+
+        <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+          Teesta Group of Institutions comprises a network of well-established
+          educational and healthcare institutions that work together to provide
+          students with a comprehensive learning experience. Each institution
+          is designed to offer specialized education while maintaining a strong
+          focus on practical exposure and professional development.
+          <br /><br />
+          With access to multiple campuses, hospitals, and training facilities,
+          students benefit from a diverse and integrated learning environment.
+          This interconnected ecosystem allows them to gain real-world experience,
+          develop industry-relevant skills, and build confidence in their chosen fields.
+          <br /><br />
+          The institutions are committed to maintaining high academic standards,
+          modern infrastructure, and a student-centered approach. This ensures
+          that every student receives quality education and is well-prepared to
+          meet the challenges of the professional world.
+        </p>
+
+      </div>
+
+
+      <CTASection
+  title="Explore Our Institutions & Build Your Future"
+  subtitle="Join a network of institutions that provide quality education, real-world exposure, and strong career opportunities."
+  primaryBtn={{ label: "Apply Now", href: "/resources/application" }}
+  secondaryBtn={{ label: "View Courses", href: "/courses" }}
+/>
+
+
+
+
+
 
 
     </AboutLayout>

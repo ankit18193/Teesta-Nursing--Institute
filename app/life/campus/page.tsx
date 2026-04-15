@@ -1,5 +1,6 @@
 "use client";
 
+import CTASection from "@/components/common/CTASection";
 import LifeLayout from "@/components/life/LifeLayout";
 
 const features = [
@@ -158,23 +159,31 @@ export default function CampusPage() {
 
         </section>
 
-        {/* 🔥 CTA (UPGRADED) */}
-        <section className="relative overflow-hidden rounded-3xl bg-primary text-white p-10 text-center">
 
-          <div className="absolute inset-0 opacity-10 bg-[url('/images/life/campus.png')] bg-cover"></div>
+        <div className="w-full max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+          <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+            Campus life at Teesta Group of Institutions offers a vibrant and engaging
+            environment where students can grow academically and personally. The campus
+            is designed to provide a balance between learning and recreation, ensuring
+            that students experience a holistic educational journey.
+            <br /><br />
+            With modern infrastructure, open spaces, and interactive learning environments,
+            students are encouraged to participate in academic, cultural, and extracurricular
+            activities. These experiences help in building confidence, teamwork, and
+            leadership skills.
+            <br /><br />
+            The campus fosters a supportive atmosphere where students can explore their
+            interests, build meaningful connections, and prepare themselves for future
+            professional challenges.
+          </p>
+        </div>
 
-          <div className="relative space-y-3">
-            <h3 className="text-2xl font-semibold">
-              Start Your Journey With Us
-            </h3>
-
-            <p className="text-sm opacity-90 max-w-xl mx-auto">
-              Join a community that nurtures growth, builds confidence,
-              and prepares you for a successful future.
-            </p>
-          </div>
-
-        </section>
+        <CTASection
+          title="Experience a Vibrant Campus Life"
+          subtitle="Learn, grow, and enjoy a balanced student life in a dynamic environment."
+          primaryBtn={{ label: "Explore Facilities", href: "/life/facility" }}
+          secondaryBtn={{ label: "Apply Now", href: "/contact" }}
+        />
 
       </div>
 

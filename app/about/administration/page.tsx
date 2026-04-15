@@ -1,6 +1,7 @@
 "use client";
 
 import AboutLayout from "@/components/about/AboutLayout";
+import CTASection from "@/components/common/CTASection";
 
 export default function AdministrationPage() {
   return (
@@ -71,6 +72,31 @@ export default function AdministrationPage() {
         </div>
 
       </div>
+
+      <div className="w-full mt-5 max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl border rounded-2xl p-4 sm:p-5 md:p-6 bg-gray-50 shadow-sm">
+
+        <p className="text-gray-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] text-justify">
+          The administrative system of Teesta Group of Institutions ensures smooth
+          functioning across all academic and operational activities. It is designed
+          to support students, faculty, and staff through efficient processes and
+          well-structured management practices.
+          <br /><br />
+          With a focus on transparency, discipline, and student support, the administration
+          ensures that academic schedules, examinations, and institutional activities
+          are conducted seamlessly.
+          <br /><br />
+          This strong administrative framework contributes significantly to maintaining
+          a productive learning environment and delivering quality education consistently.
+        </p>
+
+      </div>
+
+      <CTASection
+        title="Experience a Well-Structured System"
+        subtitle="Learn in an environment where everything is organized for your success."
+        primaryBtn={{ label: "Apply Now", href: "/resources/application" }}
+        secondaryBtn={{ label: "Explore Facilities", href: "/life/facility" }}
+      />
 
     </AboutLayout>
   );
