@@ -18,6 +18,7 @@ export default function ImagePreviewModal({
       <img
         src={image}
         alt="preview"
+        loading="eager"
         className="max-w-[90%] max-h-[90%] rounded-xl shadow-2xl"
       />
 

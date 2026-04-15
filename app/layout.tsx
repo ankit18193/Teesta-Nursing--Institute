@@ -1,11 +1,4 @@
-"use client";
-
-import { usePathname } from "next/navigation";
-
-import Navbar from "@/components/layout/Navbar";
-import TopBar from "@/components/layout/TopBar";
-import Footer from "@/components/layout/Footer";
-import CTASection from "@/components/sections/CTASection";
+import LayoutWrapper from "@/components/layout/LayoutWrapper";
 import "./globals.css";
 
 import { Montserrat, Inter } from "next/font/google";
@@ -27,25 +20,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
-
-  // 🔐 Check if admin login page
-  const isAdminLogin = pathname === "/admin/login";
-
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${inter.variable} w-full overflow-x-clip`}>
-
-        {/* ❌ Hide TopBar + Navbar on admin login */}
-        {!isAdminLogin && <TopBar />}
-        {!isAdminLogin && <Navbar />}
-
-        {children}
-
-        {/* ❌ Hide CTA + Footer on admin login */}
-        {!isAdminLogin && <CTASection />}
-        {!isAdminLogin && <Footer />}
-
+        <LayoutWrapper>
+          {children}
+        </LayoutWrapper>
       </body>
     </html>
   );

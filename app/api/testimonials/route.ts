@@ -4,18 +4,35 @@ import { checkAuth } from "@/lib/auth";
 import { testimonialSchema } from "@/lib/testimonial_validation";
 
 // GET all testimonials
-export async function GET() {
+export async function GET(req: Request) {
   try {
+    const { searchParams } = new URL(req.url);
+
+    const page = Number(searchParams.get("page")) || 1;
+    const limit = Number(searchParams.get("limit")) || 5;
+
+    const skip = (page - 1) * limit;
+
     const testimonials = await prisma.testimonial.findMany({
       orderBy: { createdAt: "desc" },
+      skip,
+      take: limit,
     });
+
+    const total = await prisma.testimonial.count();
 
     return NextResponse.json({
       success: true,
       data: testimonials,
+      meta: {
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+      },
     });
   } catch (error) {
-    console.error("GET TESTINOMIALS ERROR")
+    console.error("GET TESTIMONIALS ERROR");
     return NextResponse.json(
       { success: false, message: "Something went wrong" },
       { status: 500 }
